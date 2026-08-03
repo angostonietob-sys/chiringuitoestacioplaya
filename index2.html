@@ -76,7 +76,8 @@
             white-space: nowrap;
         }
 
-        .logo i, .logo .highlight {
+        .logo i,
+        .logo .highlight {
             color: #c48332;
         }
 
@@ -93,7 +94,8 @@
             transition: color 0.3s ease;
         }
 
-        .nav-menu a:hover, .nav-menu a.active {
+        .nav-menu a:hover,
+        .nav-menu a.active {
             color: #c48332;
         }
 
@@ -440,9 +442,20 @@
 
         /* RESPONSIVE MÓVIL */
         @media (max-width: 850px) {
-            .nav-menu, .social-links { display: none; }
-            .custom-footer-container { grid-template-columns: 1fr; text-align: center; }
-            .footer-col-right { align-items: center; }
+
+            .nav-menu,
+            .social-links {
+                display: none;
+            }
+
+            .custom-footer-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-col-right {
+                align-items: center;
+            }
         }
     </style>
 </head>
@@ -493,7 +506,8 @@
                     relax de la playa, los atardeceres dorados y el mejor tardeo.
                 </p>
                 <p>
-                    Ven a desconectar, tómate un mojito bien frío y deja que nos encarguemos de hacerte sentir como en casa.
+                    Ven a desconectar, tómate un mojito bien frío y deja que nos encarguemos de hacerte sentir como en
+                    casa.
                 </p>
             </div>
             <div class="about-image">
@@ -548,7 +562,7 @@
                     <i class="fa-solid fa-arrow-left"></i> Cambiar día
                 </button>
                 <h3 class="modal-title">Datos de reserva</h3>
-                
+
                 <div class="fecha-tag-container">
                     <span class="fecha-seleccionada-tag" id="tag-dia">Día seleccionado: 4 de Agosto</span>
                 </div>
@@ -565,7 +579,8 @@
 
                 <div class="form-group-compact">
                     <label for="personas-reserva"><i class="fa-solid fa-user-group"></i> Número de personas:</label>
-                    <input type="text" id="personas-reserva" class="input-compact" placeholder="Ej: 4 personas (o grupo grande)">
+                    <input type="text" id="personas-reserva" class="input-compact"
+                        placeholder="Ej: 4 personas (o grupo grande)">
                 </div>
 
                 <div class="form-group-compact">
@@ -595,6 +610,7 @@
         </div>
     </div>
 
+    <!-- SCRIPT DE NAVEGACIÓN Y ENVÍO A WHATSAPP -->
     <!-- SCRIPT DE NAVEGACIÓN Y ENVÍO A WHATSAPP -->
     <script>
         // NÚMERO DE TELÉFONO PARA RECIBIR LAS RESERVAS
@@ -651,7 +667,8 @@
         function asignarEventosDias() {
             const diasBtns = document.querySelectorAll('.cal-day-btn');
             diasBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
                     const numDia = btn.innerText;
                     const mesNombre = mesesTemporada[mesActualIndex].nombre.split(' ')[0];
                     tagDia.innerText = `Día seleccionado: ${numDia} de ${mesNombre}`;
@@ -661,22 +678,25 @@
             });
         }
 
-        btnNext.addEventListener('click', () => {
+        btnNext.addEventListener('click', (e) => {
+            e.preventDefault();
             if (mesActualIndex < mesesTemporada.length - 1) {
                 mesActualIndex++;
                 cargarMes(mesActualIndex);
             }
         });
 
-        btnPrev.addEventListener('click', () => {
+        btnPrev.addEventListener('click', (e) => {
+            e.preventDefault();
             if (mesActualIndex > 0) {
                 mesActualIndex--;
                 cargarMes(mesActualIndex);
             }
         });
 
-        // Abrir y cerrar el modal
-        btnAbrir.addEventListener('click', () => {
+        // Abrir y cerrar el modal (BLOQUEANDO LA ALMOHADILLA # EN LA URL)
+        btnAbrir.addEventListener('click', (e) => {
+            e.preventDefault();
             modal.style.display = 'flex';
             pantalla1.classList.remove('paso-oculto');
             pantalla2.classList.add('paso-oculto');
@@ -684,16 +704,24 @@
             cargarMes(0);
         });
 
-        btnCerrar.addEventListener('click', () => modal.style.display = 'none');
-        window.addEventListener('click', (e) => { if (e.target === modal) modal.style.display = 'none'; });
+        btnCerrar.addEventListener('click', (e) => {
+            e.preventDefault();
+            modal.style.display = 'none';
+        });
 
-        btnAtras.addEventListener('click', () => {
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) modal.style.display = 'none';
+        });
+
+        btnAtras.addEventListener('click', (e) => {
+            e.preventDefault();
             pantalla2.classList.add('paso-oculto');
             pantalla1.classList.remove('paso-oculto');
         });
 
         // ENVÍO DE RESERVA ESTRUCTURADO A WHATSAPP
-        btnConfirmar.addEventListener('click', () => {
+        btnConfirmar.addEventListener('click', (e) => {
+            e.preventDefault();
             const nombre = document.getElementById('nombre-cliente').value.trim();
             const telefono = document.getElementById('telefono-cliente').value.trim();
             const personas = document.getElementById('personas-reserva').value.trim();
@@ -707,10 +735,10 @@
 
             // Formato limpio idéntico al mensaje de la captura
             const mensaje = `*Reserva solicitada: ${fechaTexto} a las ${hora}H en CHIRINGUITO EL ESTACIO PLAYA.*%0A%0A` +
-                            `Nombre: ${nombre}%0A` +
-                            `Teléfono: ${telefono}%0A` +
-                            `Personas: ${personas}%0A%0A` +
-                            `En caso de no poder asistir, POR FAVOR, comuníquelo con antelación. Un saludo.`;
+                `Nombre: ${nombre}%0A` +
+                `Teléfono: ${telefono}%0A` +
+                `Personas: ${personas}%0A%0A` +
+                `En caso de no poder asistir, POR FAVOR, comuníquelo con antelación. Un saludo.`;
 
             // Enlace directo a WhatsApp
             const urlWhatsApp = `https://wa.me/${MI_NUMERO_WHATSAPP}?text=${mensaje}`;
