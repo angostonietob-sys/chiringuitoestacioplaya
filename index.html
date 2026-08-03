@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chiringuito El Estacio Playa | Web Oficial</title>
+
+    <!-- Fuentes de Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Iconos de FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* RESET BÁSICO */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #ffffff;
+            color: #2c221e;
+            padding-top: 85px;
+            overflow-x: hidden;
+            line-height: 1.5;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* HEADER PRINCIPAL (SIN REDES SOCIALES) */
+        .main-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.97);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 4px 15px rgba(212, 160, 23, 0.08);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            border-bottom: 2px solid #e8d5b5;
+            padding: 12px 0;
+        }
+
+        .header-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-top-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .logo {
+            font-family: 'Pacifico', cursive;
+            font-size: 1.7rem;
+            color: #2c1a12;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            white-space: nowrap;
+        }
+
+        .logo i,
+        .logo .highlight {
+            color: #c48332;
+        }
+
+        .nav-menu ul {
+            display: flex;
+            list-style: none;
+            gap: 28px;
+        }
+
+        .nav-menu a {
+            color: #555555;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: #c48332;
+        }
+
+        .header-action-group {
+            display: flex;
+            align-items: center;
+        }
+
+        .btn-reservar {
+            background-color: #c48332;
+            color: #ffffff;
+            padding: 10px 22px;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 12px rgba(196, 131, 50, 0.25);
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-reservar:hover {
+            background-color: #2c1a12;
+        }
+
+        /* SECCIÓN INICIO */
+        .about-section {
+            padding: 70px 0 80px 0;
+            background-color: #ffffff;
+        }
+
+        .about-container {
+            width: 90%;
+            max-width: 950px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-text .sub-heading {
+            color: #c48332;
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+            color: #2c1a12;
+        }
+
+        .about-text p {
+            color: #555555;
+            font-size: 1.08rem;
+            line-height: 1.9;
+            margin-bottom: 20px;
+        }
+
+        .about-image img {
+            width: 100%;
+            max-width: 750px;
+            border-radius: 20px;
+            box-shadow: 0 12px 30px rgba(44, 26, 18, 0.1);
+            border: 3px solid #f7ebd0;
+        }
+
+        /* FOOTER CON REDES SOCIALES REALES Y EXACTAS */
+        .custom-footer {
+            background-color: #231610;
+            color: #f7ebd0;
+            padding: 40px 0;
+            border-top: 3px solid #c48332;
+        }
+
+        .custom-footer-container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.5fr 1fr;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-logo {
+            font-family: 'Pacifico', cursive;
+            font-size: 1.8rem;
+            color: #ffffff;
+        }
+
+        .footer-logo .highlight {
+            color: #c48332;
+        }
+
+        .footer-col-center {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .footer-phone {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e8d5b5;
+        }
+
+        .footer-credits {
+            font-size: 0.82rem;
+            color: #a39382;
+        }
+
+        .footer-col-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 8px;
+        }
+
+        .social-btn-link {
+            font-size: 0.85rem;
+            color: #e8d5b5;
+            transition: color 0.3s ease;
+        }
+
+        .social-btn-link:hover {
+            color: #c48332;
+        }
+
+        .social-btn-link i {
+            color: #c48332;
+            margin-right: 5px;
+        }
+
+        /* MODAL ULTRA COMPACTO */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(35, 22, 16, 0.75);
+            backdrop-filter: blur(4px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+
+        .modal-content {
+            background: #ffffff;
+            padding: 18px 18px;
+            border-radius: 18px;
+            width: 90%;
+            max-width: 330px;
+            position: relative;
+            border: 2px solid #e8d5b5;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-cerrar-modal {
+            position: absolute;
+            top: 10px;
+            right: 12px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #888;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .modal-title {
+            font-size: 1.25rem;
+            color: #2c1a12;
+            text-align: center;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .modal-sub {
+            color: #777;
+            font-size: 0.78rem;
+            text-align: center;
+            margin-bottom: 12px;
+        }
+
+        /* PANTALLA 1: CALENDARIO */
+        .cal-header-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 700;
+            color: #c48332;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+            padding: 0 4px;
+        }
+
+        .btn-mes-arrow {
+            background: none;
+            border: none;
+            color: #c48332;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            padding: 0px 8px;
+            border-radius: 5px;
+        }
+
+        .btn-mes-arrow:hover {
+            background-color: #f7ebd0;
+        }
+
+        .cal-grid-layout {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 4px;
+            text-align: center;
+        }
+
+        .cal-day-label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: #a39382;
+            padding-bottom: 2px;
+        }
+
+        .cal-day-btn {
+            background: #fdfbf7;
+            border: 1px solid #e8d5b5;
+            border-radius: 6px;
+            padding: 6px 0;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: #2c1a12;
+            cursor: pointer;
+        }
+
+        .cal-day-btn:hover {
+            background: #c48332;
+            color: #ffffff;
+            border-color: #c48332;
+        }
+
+        .cal-day-empty {
+            visibility: hidden;
+        }
+
+        /* PANTALLA 2: DATOS COMPACTOS */
+        .paso-oculto {
+            display: none !important;
+        }
+
+        .btn-atras-link {
+            background: none;
+            border: none;
+            color: #c48332;
+            font-size: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 6px;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 0;
+        }
+
+        .fecha-tag-container {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .fecha-seleccionada-tag {
+            background: #f7ebd0;
+            color: #2c1a12;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 10px;
+            display: inline-block;
+            border: 1px solid #e8d5b5;
+        }
+
+        .form-group-compact {
+            margin-bottom: 8px;
+            text-align: left;
+        }
+
+        .form-group-compact label {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #2c1a12;
+            margin-bottom: 2px;
+        }
+
+        .input-compact {
+            width: 100%;
+            padding: 7px 10px;
+            border: 1px solid #dcdcdc;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 0.82rem;
+            outline: none;
+        }
+
+        .input-compact:focus {
+            border-color: #c48332;
+        }
+
+        .btn-confirmar-final {
+            width: 100%;
+            background-color: #c48332;
+            color: #ffffff;
+            padding: 9px;
+            border: none;
+            border-radius: 18px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            margin-top: 6px;
+        }
+
+        .btn-confirmar-final:hover {
+            background-color: #2c1a12;
+        }
+
+        /* RESPONSIVE MÓVIL */
+        @media (max-width: 850px) {
+            .main-header {
+                padding: 8px 0 10px 0;
+            }
+
+            .header-container {
+                width: 95%;
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .header-top-row {
+                width: 100%;
+            }
+
+            .logo {
+                font-size: 1.3rem;
+                gap: 5px;
+            }
+
+            .btn-reservar {
+                padding: 7px 13px;
+                font-size: 0.75rem;
+                white-space: nowrap;
+            }
+
+            .nav-menu ul {
+                gap: 14px;
+                justify-content: center;
+            }
+
+            .nav-menu a {
+                font-size: 0.82rem;
+                font-weight: 600;
+            }
+
+            body {
+                padding-top: 95px;
+            }
+
+            .custom-footer-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-col-right {
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER ADAPTADO MÓVIL Y PC -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="header-top-row">
+                <a href="javascript:void(0)" class="logo">
+                    <i class="fa-solid fa-water"></i>
+                    El Estacio <span class="highlight">Playa</span>
+                </a>
+
+                <div class="header-action-group">
+                    <button type="button" class="btn-reservar" id="btn-abrir-reserva">RESERVAR MESA</button>
+                </div>
+            </div>
+
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="#inicio" class="active">Inicio</a></li>
+                    <li><a href="#carta">La Carta</a></li>
+                    <li><a href="#novedades">Novedades</a></li>
+                    <li><a href="#eventos">Eventos</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- INICIO -->
+    <section class="about-section" id="inicio">
+        <div class="about-container">
+            <div class="about-text">
+                <span class="sub-heading">Bienvenidos al paraíso</span>
+                <h2>Tradición marinera y el mejor ambiente en La Manga</h2>
+                <p>
+                    En <strong>Chiringuito El Estacio Playa</strong> vivimos por y para el mar. Situados en un enclave
+                    privilegiado frente a las aguas tranquilas del Mar Menor, ofrecemos una experiencia gastronómica
+                    donde el producto fresco de la zona es el verdadero protagonista.
+                </p>
+                <p>
+                    Desde nuestros icónicos arroces y paellas recién hechas, hasta el pescado del día a la brisa marina,
+                    cada plato está pensado para disfrutar sin prisas. Un espacio donde la buena mesa se junta con el
+                    relax de la playa, los atardeceres dorados y el mejor tardeo.
+                </p>
+                <p>
+                    Ven a desconectar, tómate un mojito bien frío y deja que nos encarguemos de hacerte sentir como en
+                    casa.
+                </p>
+            </div>
+            <div class="about-image">
+                <img src="chiringuitomariam.jpg" alt="Chiringuito El Estacio Playa">
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER CON ENLACES A REDES SOCIALES 100% REALES -->
+    <footer class="custom-footer">
+        <div class="custom-footer-container">
+            <div class="footer-col-left">
+                <a href="javascript:void(0)" class="footer-logo">
+                    <i class="fa-solid fa-water"></i> El Estacio <span class="highlight">Playa</span>
+                </a>
+            </div>
+            <div class="footer-col-center">
+                <a href="tel:644332518" class="footer-phone"><i class="fa-solid fa-phone"></i> 644 33 25 18</a>
+                <span class="footer-credits">Página creada por Borja Angosto Nieto con tecnología VSC</span>
+            </div>
+            <div class="footer-col-right">
+                <a href="https://www.instagram.com/chiringuitoestacioplaya2.0?igsh=ejNsazM5MHBzbHF2" target="_blank"
+                    class="social-btn-link">
+                    <i class="fa-brands fa-instagram"></i> Instagram
+                </a>
+                <a href="https://www.facebook.com/share/19CXRFEvd9/" target="_blank" class="social-btn-link">
+                    <i class="fa-brands fa-facebook-f"></i> Facebook
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- VENTANA EMERGENTE DE RESERVA -->
+    <div id="modal-reserva" class="modal-overlay">
+        <div class="modal-content">
+            <button class="btn-cerrar-modal" id="btn-cerrar-modal">&times;</button>
+
+            <!-- PANTALLA 1: CALENDARIO DE TEMPORADA -->
+            <div id="pantalla-paso-1">
+                <h3 class="modal-title">Elige el día</h3>
+                <p class="modal-sub">Selecciona una fecha para tu reserva</p>
+
+                <div class="cal-header-bar">
+                    <button type="button" class="btn-mes-arrow" id="btn-mes-prev">&lt;</button>
+                    <span id="titulo-mes">Agosto 2026</span>
+                    <button type="button" class="btn-mes-arrow" id="btn-mes-next">&gt;</button>
+                </div>
+
+                <div class="cal-grid-layout" id="cal-grid">
+                    <!-- Días renderizados con Javascript -->
+                </div>
+            </div>
+
+            <!-- PANTALLA 2: DATOS DE CONTACTO Y PERSONAS -->
+            <div id="pantalla-paso-2" class="paso-oculto">
+                <button id="btn-atras-paso" class="btn-atras-link">
+                    <i class="fa-solid fa-arrow-left"></i> Cambiar día
+                </button>
+                <h3 class="modal-title">Datos de reserva</h3>
+
+                <div class="fecha-tag-container">
+                    <span class="fecha-seleccionada-tag" id="tag-dia">Día seleccionado: 4 de Agosto</span>
+                </div>
+
+                <div class="form-group-compact">
+                    <label for="nombre-cliente"><i class="fa-regular fa-user"></i> Nombre completo:</label>
+                    <input type="text" id="nombre-cliente" class="input-compact" placeholder="Tu nombre">
+                </div>
+
+                <div class="form-group-compact">
+                    <label for="telefono-cliente"><i class="fa-solid fa-phone"></i> Teléfono:</label>
+                    <input type="tel" id="telefono-cliente" class="input-compact" placeholder="Tu teléfono">
+                </div>
+
+                <div class="form-group-compact">
+                    <label for="personas-reserva"><i class="fa-solid fa-user-group"></i> Número de personas:</label>
+                    <input type="text" id="personas-reserva" class="input-compact"
+                        placeholder="Ej: 4 personas (o grupo grande)">
+                </div>
+
+                <div class="form-group-compact">
+                    <label for="hora-reserva"><i class="fa-regular fa-clock"></i> Hora de reserva:</label>
+                    <select id="hora-reserva" class="input-compact">
+                        <option value="">-- Selecciona hora --</option>
+                        <optgroup label="Comidas">
+                            <option value="13:30">13:30 hs</option>
+                            <option value="14:00">14:00 hs</option>
+                            <option value="14:30">14:30 hs</option>
+                            <option value="15:00">15:00 hs</option>
+                            <option value="15:30">15:30 hs</option>
+                        </optgroup>
+                        <optgroup label="Cenas">
+                            <option value="20:30">20:30 hs</option>
+                            <option value="21:00">21:00 hs</option>
+                            <option value="21:30">21:30 hs</option>
+                            <option value="22:00">22:00 hs</option>
+                            <option value="22:30">22:30 hs</option>
+                        </optgroup>
+                    </select>
+                </div>
+
+                <button class="btn-confirmar-final" id="btn-confirmar-reserva">CONFIRMAR RESERVA</button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- SCRIPT DE NAVEGACIÓN Y ENVÍO A WHATSAPP -->
+    <script>
+        // NÚMERO DE TELÉFONO PARA RECIBIR LAS RESERVAS
+        const MI_NUMERO_WHATSAPP = "34609085566";
+
+        const btnAbrir = document.getElementById('btn-abrir-reserva');
+        const modal = document.getElementById('modal-reserva');
+        const btnCerrar = document.getElementById('btn-cerrar-modal');
+
+        const pantalla1 = document.getElementById('pantalla-paso-1');
+        const pantalla2 = document.getElementById('pantalla-paso-2');
+        const btnAtras = document.getElementById('btn-atras-paso');
+        const tagDia = document.getElementById('tag-dia');
+        const btnConfirmar = document.getElementById('btn-confirmar-reserva');
+
+        // Configuración de meses para la temporada (Agosto y Septiembre)
+        const mesesTemporada = [
+            { nombre: 'Agosto 2026', dias: 31, offset: 5 },  // Agosto empieza en Sábado
+            { nombre: 'Septiembre 2026', dias: 30, offset: 1 } // Septiembre empieza en Martes
+        ];
+        let mesActualIndex = 0;
+
+        const tituloMes = document.getElementById('titulo-mes');
+        const btnPrev = document.getElementById('btn-mes-prev');
+        const btnNext = document.getElementById('btn-mes-next');
+        const calGrid = document.getElementById('cal-grid');
+
+        // Renderizar mes en pantalla
+        function cargarMes(index) {
+            const mes = mesesTemporada[index];
+            tituloMes.innerText = mes.nombre;
+
+            calGrid.innerHTML = `
+                <span class="cal-day-label">L</span>
+                <span class="cal-day-label">M</span>
+                <span class="cal-day-label">X</span>
+                <span class="cal-day-label">J</span>
+                <span class="cal-day-label">V</span>
+                <span class="cal-day-label">S</span>
+                <span class="cal-day-label">D</span>
+            `;
+
+            for (let i = 0; i < mes.offset; i++) {
+                calGrid.innerHTML += `<span class="cal-day-empty"></span>`;
+            }
+
+            for (let d = 1; d <= mes.dias; d++) {
+                calGrid.innerHTML += `<button type="button" class="cal-day-btn">${d}</button>`;
+            }
+
+            asignarEventosDias();
+        }
+
+        function asignarEventosDias() {
+            const diasBtns = document.querySelectorAll('.cal-day-btn');
+            diasBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const numDia = btn.innerText;
+                    const mesNombre = mesesTemporada[mesActualIndex].nombre.split(' ')[0];
+                    tagDia.innerText = `Día seleccionado: ${numDia} de ${mesNombre}`;
+                    pantalla1.classList.add('paso-oculto');
+                    pantalla2.classList.remove('paso-oculto');
+                });
+            });
+        }
+
+        btnNext.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (mesActualIndex < mesesTemporada.length - 1) {
+                mesActualIndex++;
+                cargarMes(mesActualIndex);
+            }
+        });
+
+        btnPrev.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (mesActualIndex > 0) {
+                mesActualIndex--;
+                cargarMes(mesActualIndex);
+            }
+        });
+
+        // Abrir y cerrar el modal
+        btnAbrir.addEventListener('click', (e) => {
+            e.preventDefault();
+            modal.style.display = 'flex';
+            pantalla1.classList.remove('paso-oculto');
+            pantalla2.classList.add('paso-oculto');
+            mesActualIndex = 0;
+            cargarMes(0);
+        });
+
+        btnCerrar.addEventListener('click', (e) => {
+            e.preventDefault();
+            modal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) modal.style.display = 'none';
+        });
+
+        btnAtras.addEventListener('click', (e) => {
+            e.preventDefault();
+            pantalla2.classList.add('paso-oculto');
+            pantalla1.classList.remove('paso-oculto');
+        });
+
+        // ENVÍO DE RESERVA ESTRUCTURADO A WHATSAPP
+        btnConfirmar.addEventListener('click', (e) => {
+            e.preventDefault();
+            const nombre = document.getElementById('nombre-cliente').value.trim();
+            const telefono = document.getElementById('telefono-cliente').value.trim();
+            const personas = document.getElementById('personas-reserva').value.trim();
+            const hora = document.getElementById('hora-reserva').value;
+            const fechaTexto = tagDia.innerText.replace('Día seleccionado: ', '');
+
+            if (nombre === "" || telefono === "" || personas === "" || hora === "") {
+                alert("Por favor, rellena tu nombre, teléfono, número de personas y hora.");
+                return;
+            }
+
+            // Formato limpio idéntico al mensaje de la captura
+            const mensaje = `*Reserva solicitada: ${fechaTexto} a las ${hora}H en CHIRINGUITO EL ESTACIO PLAYA.*%0A%0A` +
+                `Nombre: ${nombre}%0A` +
+                `Teléfono: ${telefono}%0A` +
+                `Personas: ${personas}%0A%0A` +
+                `En caso de no poder asistir, POR FAVOR, comuníquelo con antelación. Un saludo.`;
+
+            // Enlace directo a WhatsApp
+            const urlWhatsApp = `https://wa.me/${MI_NUMERO_WHATSAPP}?text=${mensaje}`;
+
+            window.open(urlWhatsApp, '_blank');
+        });
+
+        // Carga inicial
+        cargarMes(0);
+    </script>
+
+</body>
+
+</html>
