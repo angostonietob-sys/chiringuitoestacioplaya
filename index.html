@@ -41,7 +41,7 @@
             color: inherit;
         }
 
-        /* HEADER PRINCIPAL */
+        /* HEADER PRINCIPAL (SIN REDES SOCIALES) */
         .main-header {
             position: fixed;
             top: 0;
@@ -109,22 +109,6 @@
         .header-action-group {
             display: flex;
             align-items: center;
-            gap: 20px;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 15px;
-        }
-
-        .social-icon {
-            color: #666666;
-            font-size: 1.2rem;
-            transition: color 0.3s ease;
-        }
-
-        .social-icon:hover {
-            color: #c48332;
         }
 
         .btn-reservar {
@@ -190,7 +174,7 @@
             border: 3px solid #f7ebd0;
         }
 
-        /* FOOTER */
+        /* FOOTER CON REDES SOCIALES REALES Y EXACTAS */
         .custom-footer {
             background-color: #231610;
             color: #f7ebd0;
@@ -246,10 +230,16 @@
         .social-btn-link {
             font-size: 0.85rem;
             color: #e8d5b5;
+            transition: color 0.3s ease;
+        }
+
+        .social-btn-link:hover {
+            color: #c48332;
         }
 
         .social-btn-link i {
             color: #c48332;
+            margin-right: 5px;
         }
 
         /* MODAL ULTRA COMPACTO */
@@ -447,12 +437,8 @@
             background-color: #2c1a12;
         }
 
-        /* RESPONSIVE MÓVIL (LOGO + BOTÓN ARRIBA, MENÚ ABAJO) */
+        /* RESPONSIVE MÓVIL */
         @media (max-width: 850px) {
-            .social-links {
-                display: none;
-            }
-
             .main-header {
                 padding: 8px 0 10px 0;
             }
@@ -516,12 +502,6 @@
                 </a>
 
                 <div class="header-action-group">
-                    <div class="social-links">
-                        <a href="https://facebook.com" target="_blank" class="social-icon"><i
-                                class="fa-brands fa-facebook-f"></i></a>
-                        <a href="https://instagram.com" target="_blank" class="social-icon"><i
-                                class="fa-brands fa-instagram"></i></a>
-                    </div>
                     <button type="button" class="btn-reservar" id="btn-abrir-reserva">RESERVAR MESA</button>
                 </div>
             </div>
@@ -564,7 +544,7 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
+    <!-- FOOTER CON ENLACES A REDES SOCIALES 100% REALES -->
     <footer class="custom-footer">
         <div class="custom-footer-container">
             <div class="footer-col-left">
@@ -577,10 +557,13 @@
                 <span class="footer-credits">Página creada por Borja Angosto Nieto con tecnología VSC</span>
             </div>
             <div class="footer-col-right">
-                <a href="https://instagram.com" target="_blank" class="social-btn-link"><i
-                        class="fa-brands fa-instagram"></i> Instagram</a>
-                <a href="https://facebook.com" target="_blank" class="social-btn-link"><i
-                        class="fa-brands fa-facebook-f"></i> Facebook</a>
+                <a href="https://www.instagram.com/chiringuitoestacioplaya2.0?igsh=ejNsazM5MHBzbHF2" target="_blank"
+                    class="social-btn-link">
+                    <i class="fa-brands fa-instagram"></i> Instagram
+                </a>
+                <a href="https://www.facebook.com/share/19CXRFEvd9/" target="_blank" class="social-btn-link">
+                    <i class="fa-brands fa-facebook-f"></i> Facebook
+                </a>
             </div>
         </div>
     </footer>
