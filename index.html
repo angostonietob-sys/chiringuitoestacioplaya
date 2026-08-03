@@ -440,12 +440,37 @@
             background-color: #2c1a12;
         }
 
-        /* RESPONSIVE MÓVIL */
+        /* RESPONSIVE MÓVIL PERFECCIONADO */
         @media (max-width: 850px) {
 
             .nav-menu,
             .social-links {
                 display: none;
+            }
+
+            .main-header {
+                height: 65px;
+            }
+
+            .header-container {
+                width: 95%;
+                padding: 0 4px;
+            }
+
+            .logo {
+                font-size: 1.35rem;
+                gap: 6px;
+            }
+
+            .btn-reservar {
+                padding: 8px 14px;
+                font-size: 0.75rem;
+                letter-spacing: 0.5px;
+                white-space: nowrap;
+            }
+
+            body {
+                padding-top: 65px;
             }
 
             .custom-footer-container {
@@ -462,7 +487,7 @@
 
 <body>
 
-    <!-- HEADER CORREGIDO Y LIMPIO SIN ALMOHADILLAS -->
+    <!-- HEADER -->
     <header class="main-header">
         <div class="header-container">
             <a href="javascript:void(0)" class="logo">
@@ -522,7 +547,7 @@
     <footer class="custom-footer">
         <div class="custom-footer-container">
             <div class="footer-col-left">
-                <a href="#" class="footer-logo">
+                <a href="javascript:void(0)" class="footer-logo">
                     <i class="fa-solid fa-water"></i> El Estacio <span class="highlight">Playa</span>
                 </a>
             </div>
@@ -531,8 +556,10 @@
                 <span class="footer-credits">Página creada por Borja Angosto Nieto con tecnología VSC</span>
             </div>
             <div class="footer-col-right">
-                <a href="#" target="_blank" class="social-btn-link"><i class="fa-brands fa-instagram"></i> Instagram</a>
-                <a href="#" target="_blank" class="social-btn-link"><i class="fa-brands fa-facebook-f"></i> Facebook</a>
+                <a href="https://instagram.com" target="_blank" class="social-btn-link"><i
+                        class="fa-brands fa-instagram"></i> Instagram</a>
+                <a href="https://facebook.com" target="_blank" class="social-btn-link"><i
+                        class="fa-brands fa-facebook-f"></i> Facebook</a>
             </div>
         </div>
     </footer>
@@ -612,7 +639,6 @@
         </div>
     </div>
 
-    <!-- SCRIPT DE NAVEGACIÓN Y ENVÍO A WHATSAPP -->
     <!-- SCRIPT DE NAVEGACIÓN Y ENVÍO A WHATSAPP -->
     <script>
         // NÚMERO DE TELÉFONO PARA RECIBIR LAS RESERVAS
@@ -696,7 +722,7 @@
             }
         });
 
-        // Abrir y cerrar el modal (BLOQUEANDO LA ALMOHADILLA # EN LA URL)
+        // Abrir y cerrar el modal
         btnAbrir.addEventListener('click', (e) => {
             e.preventDefault();
             modal.style.display = 'flex';
