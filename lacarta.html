@@ -6,13 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>La Carta | Chiringuito El Estacio Playa</title>
 
-    <!-- Fuentes -->
+    <!-- Fuentes e Iconos -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
-
-    <!-- Iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -108,7 +106,7 @@
             color: #c48332;
         }
 
-        /* ESTRUCTURA Y TITULO */
+        /* CARTA GRID */
         .catalog-container {
             width: 90%;
             max-width: 1200px;
@@ -126,14 +124,12 @@
             color: #c48332;
         }
 
-        /* REJILLA ESTILO 3 COLUMNAS */
         .catalog-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 30px;
         }
 
-        /* TARJETA BLANCA CON BORDE DORADO SUAVE */
         .card-item {
             background-color: #ffffff;
             border-radius: 12px;
@@ -183,7 +179,6 @@
             color: #2c1a12;
         }
 
-        /* SECCIÓN DE ICONOS DE INGREDIENTES */
         .card-ingredients-icons {
             margin-top: auto;
             padding-top: 12px;
@@ -269,7 +264,6 @@
             margin-right: 5px;
         }
 
-        /* RESPONSIVE */
         @media (max-width: 900px) {
             .catalog-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -304,17 +298,14 @@
 
 <body>
 
-    <!-- HEADER -->
     <header class="main-header">
         <div class="header-container">
             <div class="header-left-group">
                 <a href="index.html" class="logo">
-                    <i class="fa-solid fa-water"></i>
-                    El Estacio <span class="highlight">Playa</span>
+                    <i class="fa-solid fa-water"></i> El Estacio <span class="highlight">Playa</span>
                 </a>
                 <a href="index.html" class="btn-reservar-header">RESERVAR MESA</a>
             </div>
-
             <nav class="nav-menu">
                 <ul>
                     <li><a href="index.html">Inicio</a></li>
@@ -326,25 +317,20 @@
         </div>
     </header>
 
-    <!-- CARTA -->
     <main class="catalog-container">
         <div class="catalog-header">
             <h1>Nuestra Carta</h1>
         </div>
 
         <div class="catalog-grid">
-
             <!-- TARJETA 1 -->
             <div class="card-item">
-                <div class="card-img-wrapper">
-                    <img src="frituradepescado.jpeg" alt="Fritura de Pescado">
-                </div>
+                <div class="card-img-wrapper"><img src="frituradepescado.jpeg" alt="Fritura de Pescado"></div>
                 <div class="card-body">
                     <h3 class="card-title">Fritura de Pescado</h3>
                     <p class="card-detail"><strong>Tipo:</strong> Entrante / Ración</p>
                     <p class="card-detail"><strong>Descripción:</strong> Bacaladilla, gambas, boquerones, chopitos y
                         calamar</p>
-
                     <div class="card-ingredients-icons">
                         <span class="icon-badge" title="Pescado"><i class="fa-solid fa-fish"></i></span>
                         <span class="icon-badge" title="Gamba"><i class="fa-solid fa-shrimp"></i></span>
@@ -355,15 +341,12 @@
 
             <!-- TARJETA 2 -->
             <div class="card-item">
-                <div class="card-img-wrapper">
-                    <img src="hamburguesaclasica.jpeg" alt="Hamburguesa Clásica">
-                </div>
+                <div class="card-img-wrapper"><img src="hamburguesaclasica.jpeg" alt="Hamburguesa Clásica"></div>
                 <div class="card-body">
                     <h3 class="card-title">Hamburguesa Clásica</h3>
                     <p class="card-detail"><strong>Tipo:</strong> Principal / Carnes</p>
                     <p class="card-detail"><strong>Descripción:</strong> Carne de ternera, lechuga, tomate, queso y
                         patatas fritas de acompañamiento</p>
-
                     <div class="card-ingredients-icons">
                         <span class="icon-badge" title="Carne / Queso"><i class="fa-solid fa-cheese"></i></span>
                         <span class="icon-badge" title="Lechuga / Tomate"><i class="fa-solid fa-leaf"></i></span>
@@ -374,15 +357,12 @@
 
             <!-- TARJETA 3 -->
             <div class="card-item">
-                <div class="card-img-wrapper">
-                    <img src="nuestrassardina.jpeg" alt="Nuestras Sardinas">
-                </div>
+                <div class="card-img-wrapper"><img src="nuestrassardina.jpeg" alt="Nuestras Sardinas"></div>
                 <div class="card-body">
                     <h3 class="card-title">Nuestras Sardinas</h3>
                     <p class="card-detail"><strong>Tipo:</strong> Ración / Especialidad</p>
                     <p class="card-detail"><strong>Descripción:</strong> Aquí tenemos a las que durante 20 años han sido
                         las reinas de la casa, nuestras deliciosas sardinas</p>
-
                     <div class="card-ingredients-icons">
                         <span class="icon-badge" title="Pescado Fresco"><i class="fa-solid fa-fish"></i></span>
                         <span class="icon-badge" title="Especialidad de la casa"><i
@@ -394,15 +374,12 @@
 
             <!-- TARJETA 4 -->
             <div class="card-item">
-                <div class="card-img-wrapper">
-                    <img src="calamarnacional.jpeg" alt="Calamar Nacional">
-                </div>
+                <div class="card-img-wrapper"><img src="calamarnacional.jpeg" alt="Calamar Nacional"></div>
                 <div class="card-body">
                     <h3 class="card-title">Calamar Nacional</h3>
                     <p class="card-detail"><strong>Tipo:</strong> Principal / Ración</p>
                     <p class="card-detail"><strong>Descripción:</strong> Calamar nacional con acompañamiento de alga
                         wakame y salsa verde aparte</p>
-
                     <div class="card-ingredients-icons">
                         <span class="icon-badge" title="Calamar del Mar"><i class="fa-solid fa-water"></i></span>
                         <span class="icon-badge" title="Alga Wakame"><i class="fa-solid fa-seedling"></i></span>
@@ -413,15 +390,12 @@
 
             <!-- TARJETA 5 -->
             <div class="card-item">
-                <div class="card-img-wrapper">
-                    <img src="ensaladacesar.jpeg" alt="Ensalada César">
-                </div>
+                <div class="card-img-wrapper"><img src="ensaladacesar.jpeg" alt="Ensalada César"></div>
                 <div class="card-body">
                     <h3 class="card-title">Ensalada César</h3>
                     <p class="card-detail"><strong>Tipo:</strong> Ensalada / Entrante</p>
                     <p class="card-detail"><strong>Descripción:</strong> Ensalada césar con nuestro pollo hecho al
                         momento</p>
-
                     <div class="card-ingredients-icons">
                         <span class="icon-badge" title="Verduras Frescas"><i class="fa-solid fa-leaf"></i></span>
                         <span class="icon-badge" title="Pollo Recién Hecho"><i
@@ -433,15 +407,12 @@
 
             <!-- TARJETA 6 -->
             <div class="card-item">
-                <div class="card-img-wrapper">
-                    <img src="ensaladarulodecabra.jpeg" alt="Ensalada de Rulo de Cabra">
-                </div>
+                <div class="card-img-wrapper"><img src="ensaladarulodecabra.jpeg" alt="Ensalada de Rulo de Cabra"></div>
                 <div class="card-body">
                     <h3 class="card-title">Ensalada de Rulo de Cabra</h3>
                     <p class="card-detail"><strong>Tipo:</strong> Ensalada / Entrante</p>
                     <p class="card-detail"><strong>Descripción:</strong> Queso de rulo de cabra acompañado de salsa de
                         mostaza y miel</p>
-
                     <div class="card-ingredients-icons">
                         <span class="icon-badge" title="Queso de Cabra"><i class="fa-solid fa-cheese"></i></span>
                         <span class="icon-badge" title="Salsa Mostaza y Miel"><i class="fa-solid fa-jar"></i></span>
@@ -452,14 +423,12 @@
 
             <!-- TARJETA 7 -->
             <div class="card-item">
-                <div class="card-img-wrapper">
-                    <img src="ventrescacontomateyaceitunas.jpeg" alt="Ensalada de Ventresca">
+                <div class="card-img-wrapper"><img src="ventrescacontomateyaceitunas.jpeg" alt="Ensalada de Ventresca">
                 </div>
                 <div class="card-body">
                     <h3 class="card-title">Ensalada de Ventresca</h3>
                     <p class="card-detail"><strong>Tipo:</strong> Ensalada / Entrante</p>
                     <p class="card-detail"><strong>Descripción:</strong> Ventresca de atún, aceitunas y tomate</p>
-
                     <div class="card-ingredients-icons">
                         <span class="icon-badge" title="Ventresca de Atún"><i class="fa-solid fa-fish"></i></span>
                         <span class="icon-badge" title="Tomate Fresco"><i class="fa-solid fa-leaf"></i></span>
@@ -470,15 +439,13 @@
 
             <!-- TARJETA 8 -->
             <div class="card-item">
-                <div class="card-img-wrapper">
-                    <img src="entrecotconverdurasypatatas.jpeg" alt="Entrecot con Verduras">
+                <div class="card-img-wrapper"><img src="entrecotconverdurasypatatas.jpeg" alt="Entrecot con Verduras">
                 </div>
                 <div class="card-body">
                     <h3 class="card-title">Entrecot con Verduras</h3>
                     <p class="card-detail"><strong>Tipo:</strong> Principal / Carnes</p>
                     <p class="card-detail"><strong>Descripción:</strong> Entrecot a la plancha, verduras variadas y
                         guarnición de patatas</p>
-
                     <div class="card-ingredients-icons">
                         <span class="icon-badge" title="Carne Entrecot"><i
                                 class="fa-solid fa-drumstick-bite"></i></span>
@@ -490,15 +457,12 @@
 
             <!-- TARJETA 9 -->
             <div class="card-item">
-                <div class="card-img-wrapper">
-                    <img src="gambasalajillo.jpeg" alt="Gambas al Ajillo">
-                </div>
+                <div class="card-img-wrapper"><img src="gambasalajillo.jpeg" alt="Gambas al Ajillo"></div>
                 <div class="card-body">
                     <h3 class="card-title">Gambas al Ajillo</h3>
                     <p class="card-detail"><strong>Tipo:</strong> Entrante / Especialidad</p>
                     <p class="card-detail"><strong>Descripción:</strong> Gambas, aceite de oliva virgen extra, ajos
                         laminados y cayena</p>
-
                     <div class="card-ingredients-icons">
                         <span class="icon-badge" title="Gambas Frescas"><i class="fa-solid fa-shrimp"></i></span>
                         <span class="icon-badge" title="Aceite AOVE y Ajo"><i
@@ -508,11 +472,9 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </main>
 
-    <!-- FOOTER -->
     <footer class="custom-footer">
         <div class="custom-footer-container">
             <div class="footer-col-left">
@@ -526,12 +488,9 @@
             </div>
             <div class="footer-col-right">
                 <a href="https://www.instagram.com/chiringuitoestacioplaya2.0?igsh=ejNsazM5MHBzbHF2" target="_blank"
-                    class="social-btn-link">
-                    <i class="fa-brands fa-instagram"></i> Instagram
-                </a>
-                <a href="https://www.facebook.com/share/19CXRFEvd9/" target="_blank" class="social-btn-link">
-                    <i class="fa-brands fa-facebook-f"></i> Facebook
-                </a>
+                    class="social-btn-link"><i class="fa-brands fa-instagram"></i> Instagram</a>
+                <a href="https://www.facebook.com/share/19CXRFEvd9/" target="_blank" class="social-btn-link"><i
+                        class="fa-brands fa-facebook-f"></i> Facebook</a>
             </div>
         </div>
     </footer>
