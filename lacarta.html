@@ -6,291 +6,502 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>La Carta | Chiringuito El Estacio Playa</title>
 
-    <!-- Fuentes e Iconos -->
+    <!-- TIPOGRAFÍAS GOOGLE FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;500;600;700&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&family=Pacifico&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #faf8f5;
-            color: #2c1a12;
-            padding-top: 100px;
-            line-height: 1.5;
+            background-color: #fcfbf7;
+            color: #222;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        /* HEADER */
-        .main-header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: #ffffff;
-            z-index: 1000;
-            border-bottom: 1px solid #e8d5b5;
-            padding: 15px 0;
-        }
-
-        .header-container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
+        /* HEADER Y NAVEGACIÓN */
+        .header-principal {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 22px 50px;
+            background: #ffffff;
+            border-bottom: 1px solid #f2ede4;
         }
 
-        .header-left-group {
+        .header-izq {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 22px;
         }
 
-        .logo {
+        .logo-contenedor {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .logo-olas-svg {
+            width: 28px;
+            height: 20px;
+            fill: none;
+            stroke: #c98a42;
+            stroke-width: 2.6;
+            stroke-linecap: round;
+        }
+
+        .logo-texto {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.55rem;
+            font-weight: 800;
+            color: #111111;
+            letter-spacing: 0.2px;
+        }
+
+        .logo-texto em {
             font-family: 'Pacifico', cursive;
-            font-size: 1.8rem;
-            color: #2c1a12;
+            font-style: normal;
+            color: #c98a42;
+            font-size: 1.6rem;
+            font-weight: 400;
+            margin-left: 3px;
+        }
+
+        .btn-reservar {
+            background-color: #c98a42;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+            padding: 9px 20px;
+            border-radius: 50px;
+            transition: background-color 0.2s ease;
+        }
+
+        .btn-reservar:hover {
+            background-color: #b57933;
+        }
+
+        .nav-derecha {
             display: flex;
             align-items: center;
-            gap: 8px;
-        }
-
-        .logo i,
-        .logo .highlight {
-            color: #c48332;
-        }
-
-        .btn-reservar-header {
-            background-color: #c48332;
-            color: #ffffff;
-            padding: 8px 18px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-        }
-
-        .btn-reservar-header:hover {
-            background-color: #2c1a12;
-        }
-
-        .nav-menu ul {
-            display: flex;
-            list-style: none;
-            gap: 25px;
-        }
-
-        .nav-menu a {
-            color: #555555;
-            font-size: 0.95rem;
-            font-weight: 500;
-        }
-
-        .nav-menu a:hover,
-        .nav-menu a.active {
-            color: #c48332;
-        }
-
-        /* CARTA GRID */
-        .catalog-container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 30px auto 80px auto;
-        }
-
-        .catalog-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .catalog-header h1 {
-            font-size: 2.2rem;
-            font-weight: 700;
-            color: #c48332;
-        }
-
-        .catalog-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
             gap: 30px;
         }
 
-        .card-item {
-            background-color: #ffffff;
-            border-radius: 12px;
-            overflow: hidden;
-            border: 1.5px solid #e8d5b5;
-            box-shadow: 0 4px 12px rgba(196, 131, 50, 0.1);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .card-img-wrapper {
-            width: 100%;
-            height: 220px;
-            overflow: hidden;
-            background-color: #f0f0f0;
-        }
-
-        .card-img-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        .card-body {
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-
-        .card-title {
-            font-size: 1.2rem;
+        .nav-derecha a {
+            text-decoration: none;
+            font-size: 0.82rem;
             font-weight: 700;
-            color: #2c1a12;
+            letter-spacing: 0.8px;
+            color: #4a4a4a;
+            transition: color 0.2s ease;
+        }
+
+        .nav-derecha a.activo,
+        .nav-derecha a:hover {
+            color: #c98a42;
+        }
+
+        /* CONTENEDOR PRINCIPAL */
+        .contenedor {
+            flex: 1;
+            max-width: 1200px;
+            width: 100%;
+            margin: 35px auto 40px;
+            padding: 0 25px;
+        }
+
+        .titulo-seccion {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #777;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+        }
+
+        /* GRID DE CATEGORÍAS */
+        .grid-categorias {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 22px;
+            margin-bottom: 45px;
+        }
+
+        .tarjeta-cat {
+            background-color: #ffffff;
+            border: 2px solid #c98a42;
+            border-radius: 12px;
+            height: 220px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .tarjeta-cat:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(201, 138, 66, 0.2);
+        }
+
+        .tarjeta-cat h2 {
+            color: #1a1a1a;
+            font-size: 1.25rem;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .btn-ver {
+            background-color: #c98a42;
+            color: #ffffff;
+            border: 2px solid #c98a42;
+            padding: 8px 32px;
+            font-size: 0.85rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-ver:hover {
+            background-color: transparent;
+            color: #c98a42;
+        }
+
+        /* TIRA FINA COMPACTA DE ALÉRGENOS */
+        .tira-alergenos-contenedor {
+            background-color: #ffffff;
+            border: 1px solid #ebd9b8;
+            border-radius: 10px;
+            padding: 12px 20px;
+            margin-top: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+        }
+
+        .tira-alergenos-titulo {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             margin-bottom: 10px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #f4ede3;
         }
 
-        .card-detail {
-            font-size: 0.88rem;
-            color: #555555;
-            margin-bottom: 6px;
-            line-height: 1.4;
+        .tira-alergenos-titulo h4 {
+            font-size: 0.78rem;
+            font-weight: 800;
+            color: #111;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
         }
 
-        .card-detail strong {
-            color: #2c1a12;
+        .tira-alergenos-titulo span {
+            font-size: 0.72rem;
+            color: #777;
+            font-style: italic;
         }
 
-        .card-ingredients-icons {
-            margin-top: auto;
-            padding-top: 12px;
-            border-top: 1px dashed #e8d5b5;
+        /* FILA HORIZONTAL DE ALÉRGENOS */
+        .tira-alergenos-scroll {
             display: flex;
             align-items: center;
             gap: 12px;
+            overflow-x: auto;
+            padding: 4px 0 6px;
+            scrollbar-width: thin;
+            scrollbar-color: #c98a42 #f2ede4;
         }
 
-        .icon-badge {
-            display: inline-flex;
+        .tira-alergenos-scroll::-webkit-scrollbar {
+            height: 4px;
+        }
+
+        .tira-alergenos-scroll::-webkit-scrollbar-thumb {
+            background: #c98a42;
+            border-radius: 4px;
+        }
+
+        .tira-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap;
+            background: #faf8f5;
+            padding: 4px 8px;
+            border-radius: 20px;
+            border: 1px solid #ebd9b8;
+            flex-shrink: 0;
+        }
+
+        .tira-ico {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
             align-items: center;
             justify-content: center;
-            width: 34px;
-            height: 34px;
-            background-color: #faf8f5;
-            border: 1px solid #e8d5b5;
-            border-radius: 50%;
-            color: #c48332;
-            font-size: 0.95rem;
+            font-size: 0.72rem;
+            color: #fff;
+        }
+
+        .tira-item span {
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: #333;
+        }
+
+        /* Colores temáticos oficiales */
+        .bg-gluten {
+            background-color: #e58b34;
+        }
+
+        .bg-crustaceos {
+            background-color: #d94a4a;
+        }
+
+        .bg-huevos {
+            background-color: #efb938;
+        }
+
+        .bg-pescado {
+            background-color: #27b6e6;
+        }
+
+        .bg-cacahuetes {
+            background-color: #b78a63;
+        }
+
+        .bg-soja {
+            background-color: #90c24c;
+        }
+
+        .bg-lacteos {
+            background-color: #8c5aa8;
+        }
+
+        .bg-frutos {
+            background-color: #995c3a;
+        }
+
+        .bg-apio {
+            background-color: #61b329;
+        }
+
+        .bg-mostaza {
+            background-color: #f39c12;
+        }
+
+        .bg-sesamo {
+            background-color: #d19b61;
+        }
+
+        .bg-sulfitos {
+            background-color: #0099e6;
+        }
+
+        .bg-altramuces {
+            background-color: #e67e22;
+        }
+
+        .bg-moluscos {
+            background-color: #f1c40f;
+        }
+
+        .bg-sin-gluten {
+            background-color: #4cb8a5;
+        }
+
+        /* MODAL */
+        .modal-fondo {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            backdrop-filter: blur(3px);
+        }
+
+        .modal-contenido {
+            background: #ffffff;
+            width: 100%;
+            max-width: 620px;
+            max-height: 85vh;
+            border-radius: 14px;
+            padding: 30px;
+            overflow-y: auto;
+            position: relative;
+            border: 2px solid #f2ede4;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
+        }
+
+        .modal-cerrar {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #888;
+            line-height: 1;
+        }
+
+        .modal-cerrar:hover {
+            color: #000;
+        }
+
+        .modal-titulo {
+            font-size: 1.35rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #c98a42;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #111;
+        }
+
+        .item-plato {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 13px 0;
+            border-bottom: 1px dashed #e5e5e5;
+        }
+
+        .item-plato:last-child {
+            border-bottom: none;
+        }
+
+        .item-info h4 {
+            font-size: 0.98rem;
+            font-weight: 700;
+            color: #111;
+            margin-bottom: 3px;
+        }
+
+        .item-info p {
+            font-size: 0.84rem;
+            color: #666;
+            font-style: italic;
+        }
+
+        .item-precio {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: #c98a42;
+            margin-left: 15px;
+            white-space: nowrap;
+        }
+
+        .modal-aviso {
+            font-size: 0.82rem;
+            color: #888;
+            font-style: italic;
+            margin-top: 15px;
+            text-align: right;
+        }
+
+        .sin-datos {
+            text-align: center;
+            color: #888;
+            padding: 25px 0;
+            font-style: italic;
         }
 
         /* FOOTER */
-        .custom-footer {
-            background-color: #231610;
-            color: #f7ebd0;
-            padding: 40px 0;
-            border-top: 3px solid #c48332;
+        .footer-principal {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            padding: 45px 50px 25px;
+            margin-top: 40px;
         }
 
-        .custom-footer-container {
-            width: 90%;
-            max-width: 1100px;
+        .footer-grid {
+            max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 1fr 1.5fr 1fr;
-            align-items: center;
-            gap: 20px;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 35px;
         }
 
-        .footer-logo {
-            font-family: 'Pacifico', cursive;
-            font-size: 1.8rem;
-            color: #ffffff;
+        .footer-col h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #c98a42;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .footer-logo .highlight {
-            color: #c48332;
+        .footer-col p {
+            font-size: 0.88rem;
+            color: #bbb;
+            line-height: 1.7;
+            margin-bottom: 8px;
         }
 
-        .footer-col-center {
+        .footer-col a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .footer-col a:hover {
+            color: #c98a42;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 20px;
+            border-top: 1px solid #333;
             text-align: center;
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
+            font-size: 0.8rem;
+            color: #777;
         }
 
-        .footer-phone {
-            font-size: 1.05rem;
-            font-weight: 600;
-            color: #e8d5b5;
-        }
-
-        .footer-credits {
-            font-size: 0.82rem;
-            color: #a39382;
-        }
-
-        .footer-col-right {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            gap: 8px;
-        }
-
-        .social-btn-link {
-            font-size: 0.85rem;
-            color: #e8d5b5;
-        }
-
-        .social-btn-link i {
-            color: #c48332;
-            margin-right: 5px;
-        }
-
-        @media (max-width: 900px) {
-            .catalog-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 600px) {
-            .catalog-grid {
+        @media (max-width: 768px) {
+            .footer-grid {
                 grid-template-columns: 1fr;
+                gap: 25px;
             }
 
-            .header-container {
+            .header-principal {
+                padding: 15px 20px;
                 flex-direction: column;
-                gap: 12px;
+                gap: 15px;
             }
 
-            body {
-                padding-top: 125px;
-            }
-
-            .custom-footer-container {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .footer-col-right {
-                align-items: center;
+            .tira-alergenos-titulo {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 4px;
             }
         }
     </style>
@@ -298,203 +509,400 @@
 
 <body>
 
-    <header class="main-header">
-        <div class="header-container">
-            <div class="header-left-group">
-                <a href="index.html" class="logo">
-                    <i class="fa-solid fa-water"></i> El Estacio <span class="highlight">Playa</span>
-                </a>
-                <a href="index.html" class="btn-reservar-header">RESERVAR MESA</a>
-            </div>
-            <nav class="nav-menu">
-                <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="lacarta.html" class="active">La Carta</a></li>
-                    <li><a href="index.html">Novedades</a></li>
-                    <li><a href="index.html">Eventos</a></li>
-                </ul>
-            </nav>
+    <!-- CABECERA PRINCIPAL -->
+    <header class="header-principal">
+        <div class="header-izq">
+            <a href="index.html" class="logo-contenedor">
+                <svg class="logo-olas-svg" viewBox="0 0 32 24">
+                    <path d="M2 5 Q 8 1, 16 5 T 30 5" />
+                    <path d="M2 12 Q 8 8, 16 12 T 30 12" />
+                    <path d="M2 19 Q 8 15, 16 19 T 30 19" />
+                </svg>
+                <span class="logo-texto">El Estacio <em>Playa</em></span>
+            </a>
+            <a href="https://wa.me/34XXXXXXXXX" target="_blank" class="btn-reservar">RESERVAR MESA</a>
         </div>
+
+        <nav class="nav-derecha">
+            <a href="index.html">INICIO</a>
+            <a href="lacarta.html" class="activo">LA CARTA</a>
+            <a href="nosotros.html">NOSOTROS</a>
+        </nav>
     </header>
 
-    <main class="catalog-container">
-        <div class="catalog-header">
-            <h1>Nuestra Carta</h1>
-        </div>
+    <!-- SECCIÓN PRINCIPAL DE CATEGORÍAS -->
+    <main class="contenedor">
+        <p class="titulo-seccion">SELECCIONA UNA CATEGORÍA PARA VER LOS PLATOS</p>
 
-        <div class="catalog-grid">
-            <!-- TARJETA 1 -->
-            <div class="card-item">
-                <div class="card-img-wrapper"><img src="frituradepescado.jpeg" alt="Fritura de Pescado"></div>
-                <div class="card-body">
-                    <h3 class="card-title">Fritura de Pescado</h3>
-                    <p class="card-detail"><strong>Tipo:</strong> Entrante / Ración</p>
-                    <p class="card-detail"><strong>Descripción:</strong> Bacaladilla, gambas, boquerones, chopitos y
-                        calamar</p>
-                    <div class="card-ingredients-icons">
-                        <span class="icon-badge" title="Pescado"><i class="fa-solid fa-fish"></i></span>
-                        <span class="icon-badge" title="Gamba"><i class="fa-solid fa-shrimp"></i></span>
-                        <span class="icon-badge" title="Calamar / Chopito"><i class="fa-solid fa-water"></i></span>
-                    </div>
-                </div>
+        <div class="grid-categorias">
+            <div class="tarjeta-cat">
+                <h2>TAPAS</h2>
+                <button class="btn-ver" onclick="abrirModal('tapas')">VER</button>
             </div>
 
-            <!-- TARJETA 2 -->
-            <div class="card-item">
-                <div class="card-img-wrapper"><img src="hamburguesaclasica.jpeg" alt="Hamburguesa Clásica"></div>
-                <div class="card-body">
-                    <h3 class="card-title">Hamburguesa Clásica</h3>
-                    <p class="card-detail"><strong>Tipo:</strong> Principal / Carnes</p>
-                    <p class="card-detail"><strong>Descripción:</strong> Carne de ternera, lechuga, tomate, queso y
-                        patatas fritas de acompañamiento</p>
-                    <div class="card-ingredients-icons">
-                        <span class="icon-badge" title="Carne / Queso"><i class="fa-solid fa-cheese"></i></span>
-                        <span class="icon-badge" title="Lechuga / Tomate"><i class="fa-solid fa-leaf"></i></span>
-                        <span class="icon-badge" title="Patatas Fritas"><i class="fa-solid fa-utensils"></i></span>
-                    </div>
-                </div>
+            <div class="tarjeta-cat">
+                <h2>RACIONES</h2>
+                <button class="btn-ver" onclick="abrirModal('raciones')">VER</button>
             </div>
 
-            <!-- TARJETA 3 -->
-            <div class="card-item">
-                <div class="card-img-wrapper"><img src="nuestrassardina.jpeg" alt="Nuestras Sardinas"></div>
-                <div class="card-body">
-                    <h3 class="card-title">Nuestras Sardinas</h3>
-                    <p class="card-detail"><strong>Tipo:</strong> Ración / Especialidad</p>
-                    <p class="card-detail"><strong>Descripción:</strong> Aquí tenemos a las que durante 20 años han sido
-                        las reinas de la casa, nuestras deliciosas sardinas</p>
-                    <div class="card-ingredients-icons">
-                        <span class="icon-badge" title="Pescado Fresco"><i class="fa-solid fa-fish"></i></span>
-                        <span class="icon-badge" title="Especialidad de la casa"><i
-                                class="fa-solid fa-crown"></i></span>
-                        <span class="icon-badge" title="Tradición Marinera"><i class="fa-solid fa-anchor"></i></span>
-                    </div>
-                </div>
+            <div class="tarjeta-cat">
+                <h2>ENSALADAS</h2>
+                <button class="btn-ver" onclick="abrirModal('ensaladas')">VER</button>
             </div>
 
-            <!-- TARJETA 4 -->
-            <div class="card-item">
-                <div class="card-img-wrapper"><img src="calamarnacional.jpeg" alt="Calamar Nacional"></div>
-                <div class="card-body">
-                    <h3 class="card-title">Calamar Nacional</h3>
-                    <p class="card-detail"><strong>Tipo:</strong> Principal / Ración</p>
-                    <p class="card-detail"><strong>Descripción:</strong> Calamar nacional con acompañamiento de alga
-                        wakame y salsa verde aparte</p>
-                    <div class="card-ingredients-icons">
-                        <span class="icon-badge" title="Calamar del Mar"><i class="fa-solid fa-water"></i></span>
-                        <span class="icon-badge" title="Alga Wakame"><i class="fa-solid fa-seedling"></i></span>
-                        <span class="icon-badge" title="Salsa Verde"><i class="fa-solid fa-lemon"></i></span>
-                    </div>
-                </div>
+            <div class="tarjeta-cat">
+                <h2>PESCADOS</h2>
+                <button class="btn-ver" onclick="abrirModal('pescados')">VER</button>
             </div>
 
-            <!-- TARJETA 5 -->
-            <div class="card-item">
-                <div class="card-img-wrapper"><img src="ensaladacesar.jpeg" alt="Ensalada César"></div>
-                <div class="card-body">
-                    <h3 class="card-title">Ensalada César</h3>
-                    <p class="card-detail"><strong>Tipo:</strong> Ensalada / Entrante</p>
-                    <p class="card-detail"><strong>Descripción:</strong> Ensalada césar con nuestro pollo hecho al
-                        momento</p>
-                    <div class="card-ingredients-icons">
-                        <span class="icon-badge" title="Verduras Frescas"><i class="fa-solid fa-leaf"></i></span>
-                        <span class="icon-badge" title="Pollo Recién Hecho"><i
-                                class="fa-solid fa-drumstick-bite"></i></span>
-                        <span class="icon-badge" title="Queso / Picatostes"><i class="fa-solid fa-cheese"></i></span>
-                    </div>
-                </div>
+            <div class="tarjeta-cat">
+                <h2>PLATOS FUERTES</h2>
+                <button class="btn-ver" onclick="abrirModal('platos-fuertes')">VER</button>
             </div>
 
-            <!-- TARJETA 6 -->
-            <div class="card-item">
-                <div class="card-img-wrapper"><img src="ensaladarulodecabra.jpeg" alt="Ensalada de Rulo de Cabra"></div>
-                <div class="card-body">
-                    <h3 class="card-title">Ensalada de Rulo de Cabra</h3>
-                    <p class="card-detail"><strong>Tipo:</strong> Ensalada / Entrante</p>
-                    <p class="card-detail"><strong>Descripción:</strong> Queso de rulo de cabra acompañado de salsa de
-                        mostaza y miel</p>
-                    <div class="card-ingredients-icons">
-                        <span class="icon-badge" title="Queso de Cabra"><i class="fa-solid fa-cheese"></i></span>
-                        <span class="icon-badge" title="Salsa Mostaza y Miel"><i class="fa-solid fa-jar"></i></span>
-                        <span class="icon-badge" title="Base Verde"><i class="fa-solid fa-leaf"></i></span>
-                    </div>
-                </div>
+            <div class="tarjeta-cat">
+                <h2>REFRESCOS</h2>
+                <button class="btn-ver" onclick="abrirModal('refrescos')">VER</button>
             </div>
 
-            <!-- TARJETA 7 -->
-            <div class="card-item">
-                <div class="card-img-wrapper"><img src="ventrescacontomateyaceitunas.jpeg" alt="Ensalada de Ventresca">
-                </div>
-                <div class="card-body">
-                    <h3 class="card-title">Ensalada de Ventresca</h3>
-                    <p class="card-detail"><strong>Tipo:</strong> Ensalada / Entrante</p>
-                    <p class="card-detail"><strong>Descripción:</strong> Ventresca de atún, aceitunas y tomate</p>
-                    <div class="card-ingredients-icons">
-                        <span class="icon-badge" title="Ventresca de Atún"><i class="fa-solid fa-fish"></i></span>
-                        <span class="icon-badge" title="Tomate Fresco"><i class="fa-solid fa-leaf"></i></span>
-                        <span class="icon-badge" title="Aceitunas"><i class="fa-solid fa-seedling"></i></span>
-                    </div>
-                </div>
+            <div class="tarjeta-cat">
+                <h2>CERVEZAS</h2>
+                <button class="btn-ver" onclick="abrirModal('cervezas')">VER</button>
             </div>
 
-            <!-- TARJETA 8 -->
-            <div class="card-item">
-                <div class="card-img-wrapper"><img src="entrecotconverdurasypatatas.jpeg" alt="Entrecot con Verduras">
-                </div>
-                <div class="card-body">
-                    <h3 class="card-title">Entrecot con Verduras</h3>
-                    <p class="card-detail"><strong>Tipo:</strong> Principal / Carnes</p>
-                    <p class="card-detail"><strong>Descripción:</strong> Entrecot a la plancha, verduras variadas y
-                        guarnición de patatas</p>
-                    <div class="card-ingredients-icons">
-                        <span class="icon-badge" title="Carne Entrecot"><i
-                                class="fa-solid fa-drumstick-bite"></i></span>
-                        <span class="icon-badge" title="Verduras Variadas"><i class="fa-solid fa-carrot"></i></span>
-                        <span class="icon-badge" title="Guarnición Patatas"><i class="fa-solid fa-utensils"></i></span>
-                    </div>
-                </div>
+            <div class="tarjeta-cat">
+                <h2>VINO</h2>
+                <button class="btn-ver" onclick="abrirModal('vino')">VER</button>
             </div>
 
-            <!-- TARJETA 9 -->
-            <div class="card-item">
-                <div class="card-img-wrapper"><img src="gambasalajillo.jpeg" alt="Gambas al Ajillo"></div>
-                <div class="card-body">
-                    <h3 class="card-title">Gambas al Ajillo</h3>
-                    <p class="card-detail"><strong>Tipo:</strong> Entrante / Especialidad</p>
-                    <p class="card-detail"><strong>Descripción:</strong> Gambas, aceite de oliva virgen extra, ajos
-                        laminados y cayena</p>
-                    <div class="card-ingredients-icons">
-                        <span class="icon-badge" title="Gambas Frescas"><i class="fa-solid fa-shrimp"></i></span>
-                        <span class="icon-badge" title="Aceite AOVE y Ajo"><i
-                                class="fa-solid fa-bottle-droplet"></i></span>
-                        <span class="icon-badge" title="Toque Picante Cayena"><i
-                                class="fa-solid fa-pepper-hot"></i></span>
-                    </div>
-                </div>
+            <div class="tarjeta-cat">
+                <h2>COCKTAILS</h2>
+                <button class="btn-ver" onclick="abrirModal('cocktails')">VER</button>
+            </div>
+
+            <div class="tarjeta-cat">
+                <h2>ALCOHOL / COPAS</h2>
+                <button class="btn-ver" onclick="abrirModal('alcohol')">VER</button>
+            </div>
+
+            <div class="tarjeta-cat">
+                <h2>CAFÉS</h2>
+                <button class="btn-ver" onclick="abrirModal('cafes')">VER</button>
+            </div>
+
+            <div class="tarjeta-cat">
+                <h2>CARTA DE POSTRES</h2>
+                <button class="btn-ver" onclick="abrirModal('postres')">VER</button>
             </div>
         </div>
+
+        <!-- TIRA FINA DE ALÉRGENOS -->
+        <section class="tira-alergenos-contenedor">
+            <div class="tira-alergenos-titulo">
+                <h4>Información sobre Alérgenos</h4>
+                <span>Consulte con el personal por alergias o intolerancias</span>
+            </div>
+
+            <div class="tira-alergenos-scroll">
+                <div class="tira-item">
+                    <div class="tira-ico bg-gluten">🌾</div><span>Gluten</span>
+                </div>
+                <div class="tira-item">
+                    <div class="tira-ico bg-crustaceos">🦀</div><span>Crustáceos</span>
+                </div>
+                <div class="tira-item">
+                    <div class="tira-ico bg-huevos">🥚</div><span>Huevos</span>
+                </div>
+                <div class="tira-item">
+                    <div class="tira-ico bg-pescado">🐟</div><span>Pescado</span>
+                </div>
+                <div class="tira-item">
+                    <div class="tira-ico bg-cacahuetes">🥜</div><span>Cacahuetes</span>
+                </div>
+                <div class="tira-item">
+                    <div class="tira-ico bg-soja">🌱</div><span>Soja</span>
+                </div>
+                <div class="tira-item">
+                    <div class="tira-ico bg-lacteos">🥛</div><span>Lácteos</span>
+                </div>
+                <div class="tira-item">
+                    <div class="tira-ico bg-frutos">🌰</div><span>Frutos Cáscara</span>
+                </div>
+                <div class="tira-item">
+                    <div class="tira-ico bg-apio">🥬</div><span>Apio</span>
+                </div>
+                <div class="tira-item">
+                    <div class="tira-ico bg-mostaza">🌭</div><span>Mostaza</span>
+                </div>
+                <div class="tira-item">
+                    <div class="tira-ico bg-sesamo">✨</div><span>Sésamo</span>
+                </div>
+                <div class="tira-item">
+                    <div class="tira-ico bg-sulfitos">🧪</div><span>Sulfitos</span>
+                </div>
+                <div class="tira-item">
+                    <div class="tira-ico bg-altramuces">🫘</div><span>Altramuces</span>
+                </div>
+                <div class="tira-item">
+                    <div class="tira-ico bg-moluscos">🐚</div><span>Moluscos</span>
+                </div>
+                <div class="tira-item">
+                    <div class="tira-ico bg-sin-gluten">🚫🌾</div><span>Sin Gluten</span>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <footer class="custom-footer">
-        <div class="custom-footer-container">
-            <div class="footer-col-left">
-                <a href="index.html" class="footer-logo">
-                    <i class="fa-solid fa-water"></i> El Estacio <span class="highlight">Playa</span>
-                </a>
+    <!-- VENTANA EMERGENTE (MODAL) -->
+    <div id="modalCarta" class="modal-fondo" onclick="cerrarModalAfuera(event)">
+        <div class="modal-contenido">
+            <button class="modal-cerrar" onclick="cerrarModal()">&times;</button>
+            <h3 id="modalTitulo" class="modal-titulo">Categoría</h3>
+            <div id="modalLista"></div>
+        </div>
+    </div>
+
+    <!-- FOOTER PRINCIPAL -->
+    <footer class="footer-principal">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3>Chiringuito El Estacio Playa</h3>
+                <p>Gastronomía mediterránea, tapas, y el mejor ambiente junto al mar.</p>
+                <p>📍 La Manga del Mar Menor, Murcia km 14,5</p>
             </div>
-            <div class="footer-col-center">
-                <a href="tel:644332518" class="footer-phone"><i class="fa-solid fa-phone"></i> 644 33 25 18</a>
-                <span class="footer-credits">Página creada por Borja Angosto Nieto con tecnología VSC</span>
+
+            <div class="footer-col">
+                <h3>Enlaces</h3>
+                <p><a href="index.html">Inicio</a></p>
+                <p><a href="lacarta.html">La Carta</a></p>
+                <p><a href="nosotros.html">Nosotros</a></p>
             </div>
-            <div class="footer-col-right">
-                <a href="https://www.instagram.com/chiringuitoestacioplaya2.0?igsh=ejNsazM5MHBzbHF2" target="_blank"
-                    class="social-btn-link"><i class="fa-brands fa-instagram"></i> Instagram</a>
-                <a href="https://www.facebook.com/share/19CXRFEvd9/" target="_blank" class="social-btn-link"><i
-                        class="fa-brands fa-facebook-f"></i> Facebook</a>
+
+            <div class="footer-col">
+                <h3>Reservas</h3>
+                <p>📞 Teléfono / WhatsApp:</p>
+                <p><a href="https://wa.me/34644332518" target="_blank">+34 644 33 25 18</a></p>
+                <p>Abierto en temporada de verano</p>
             </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Chiringuito El Estacio Playa. Todos los derechos reservados.</p>
         </div>
     </footer>
 
+    <!-- JAVASCRIPT -->
+    <script>
+        const cartaDatos = {
+            "tapas": {
+                titulo: "Tapas / Snacks",
+                platos: [
+                    { nombre: "Croquetas (Unidad)", desc: "Croquetas (each)", precio: "2,00 €" },
+                    { nombre: "Patatas Bravas", desc: "Potatoes in spicy tomato sauce", precio: "6,00 €" },
+                    { nombre: "Ensaladilla Rusa", desc: "Russian Salad", precio: "4,50 €" },
+                    { nombre: "Marineras", desc: "Bread stickwith Russian salad and anchovy", precio: "2,80 €" },
+                    { nombre: "Bolsa de patatas", desc: "Packet of chips", precio: "1,70 €" },
+                    { nombre: "Bote de aceitunas", desc: "Can of Olives", precio: "2,00 €" },
+                    { nombre: "Almendras", desc: "Fried almonds", precio: "2,30 €" },
+                    { nombre: "Anchoas (Unidad)", desc: "Anchovy (each)", precio: "1,20 €" },
+                    { nombre: "Caballitos (Unidad)", desc: "Horses (Unit)", precio: "2,50 €" },
+                    { nombre: "Boquerones en Vinagre (8 Unidades)", desc: "Anchovies in Vinegar (Unit)", precio: "6,00 €" },
+                    { nombre: "Monodosis Salsas", desc: "Alioli, Ketchus, Mahonesa, etc...", precio: "0,50 €" },
+                    { nombre: "Panes (Unidad)", desc: "Bread", precio: "1,00 €" }
+                ]
+            },
+            "raciones": {
+                titulo: "Raciones",
+                platos: [
+                    { nombre: "Patatas Fritas", desc: "Chips", precio: "5,50 €" },
+                    { nombre: "Pechuguitas de Pollo con Patatas", desc: "Chicken Breasts", precio: "9,50 €" },
+                    { nombre: "Alitas Pollo", desc: "Chicken Wings", precio: "8,00 €" }
+                ]
+            },
+            "ensaladas": {
+                titulo: "Ensaladas / Salad",
+                platos: [
+                    { nombre: "Ensalada César con Pollo", desc: "Caesar salad with chicken", precio: "15,00 €" },
+                    { nombre: "Ensalada Rulo de Cabra con Miel y Mostaza", desc: "Salad Goat Honey and mustard", precio: "16,00 €" },
+                    { nombre: "Tomate con Atún", desc: "Fresh tomato with tuna (sin Atún 9,00 €)", precio: "13,00 €" }
+                ]
+            },
+            "pescados": {
+                titulo: "Pescados",
+                platos: [
+                    { nombre: "Calamares Andaluza (*)", desc: "Deep fried squid rings", precio: "15,00 €" },
+                    { nombre: "Chopitos (*)", desc: "Deep fried baby squid", precio: "15,00 €" },
+                    { nombre: "Sardinas (12) (*)", desc: "Sardines (12)", precio: "15,00 €" },
+                    { nombre: "Boquerones (*)", desc: "Fried whitebait", precio: "16,00 €" },
+                    { nombre: "Almejas al ajillo", desc: "Clams \"ajillo\" style", precio: "17,00 €" },
+                    { nombre: "Gambas al ajillo", desc: "Garlic prawns", precio: "17,00 €" },
+                    { nombre: "Calamar plancha", desc: "Squid iron", precio: "30,50 €" },
+                    { nombre: "Cazón Adobado", desc: "Marinated dogfish", precio: "13,50 €" },
+                    { nombre: "Fritura Variada", desc: "Varied Fried fish", precio: "22,00 €" },
+                    { nombre: "Mejillones al Vapor", desc: "Steamed mussels", precio: "12,00 €" },
+                    { nombre: "Pata Pulpo", desc: "Octopus Leg", precio: "22,50 €" },
+                    { nombre: "Bacalao Encebollado", desc: "Cod with onions", precio: "18,00 €" }
+                ]
+            },
+            "platos-fuertes": {
+                titulo: "Platos Fuertes / Main Courses",
+                platos: [
+                    { nombre: "Hamburguesa con Patatas", desc: "Hamburgers with potatoes", precio: "12,50 €" },
+                    { nombre: "Hamburguesa \"ESTACIO\"", desc: "Bacon, Cebolla Frita y Patatas Fritas (Burger \"ESTACIO\" - Bacon, Onion, Potatoes)", precio: "15,00 €" },
+                    { nombre: "Entrecot con Patatas", desc: "Entrecote with Potatoes", precio: "22,00 €" },
+                    { nombre: "Hamburguesa Vegana", desc: "Vegan Burger", precio: "11,50 €" },
+                    { nombre: "Perrito con Patatas", desc: "Hot Dog with Potatoes", precio: "6,00 €" }
+                ]
+            },
+            "refrescos": {
+                titulo: "Refrescos / Cold Drinks",
+                platos: [
+                    { nombre: "Gaseosa", desc: "Clear Lemonade", precio: "2,00 €" },
+                    { nombre: "Agua mineral 1/2 litro", desc: "1/2 litre still water", precio: "2,00 €" },
+                    { nombre: "Agua con Gas 33 cl.", desc: "33 cl. fizzy water", precio: "2,50 €" },
+                    { nombre: "Lata Refresco", desc: "Can of soft drink", precio: "2,50 €" },
+                    { nombre: "Zumos", desc: "Fruit juice", precio: "2,00 €" },
+                    { nombre: "Granizado Normal Limón", desc: "Slash puppy Lemon", precio: "3,50 €" },
+                    { nombre: "Granizado Grande Limón", desc: "Slash puppy big Lemon", precio: "6,00 €" }
+                ]
+            },
+            "cervezas": {
+                titulo: "Cervezas / Beers",
+                platos: [
+                    { nombre: "Caña (Mahou)", desc: "Draught beer", precio: "2,60 €" },
+                    { nombre: "Caña Doble Cerveza", desc: "Draught beer beer", precio: "4,80 €" },
+                    { nombre: "Tercio (Mahou o similar)", desc: "Bottled beer", precio: "2,90 €" },
+                    { nombre: "Coronita", desc: "Coronita", precio: "4,00 €" },
+                    { nombre: "Alhambra Reserva (Tercio)", desc: "Special Bottled beer", precio: "4,00 €" },
+                    { nombre: "Cerveza sin Alcohol", desc: "Alcohol free draught beer", precio: "2,90 €" },
+                    { nombre: "Jarra de Cerveza 1 Litro", desc: "Jug of beer", precio: "11,00 €" }
+                ]
+            },
+            "vino": {
+                titulo: "Vinos / Wine",
+                platos: [
+                    { nombre: "Vaso Tinto de Verano", desc: "Glass summer wine", precio: "2,80 €" },
+                    { nombre: "Vaso Tinto de Verano Doble", desc: "Dougle Glass summer wine", precio: "5,00 €" },
+                    { nombre: "Jarra Tinto 1/Litro", desc: "Red Jug 1/Liter", precio: "13,00 €" },
+                    { nombre: "Copa Vino Tinto Rioja", desc: "Glass of house red wine", precio: "3,50 €" },
+                    { nombre: "Copa Vino Blanco Rueda", desc: "Glass of white wine Rueda", precio: "3,80 €" },
+                    { nombre: "Copa Vino Rosado", desc: "Glass of rose wine", precio: "3,80 €" },
+                    { nombre: "Botella Vino Tinto Rioja", desc: "Bottle of red wine Rioja", precio: "15,00 €" },
+                    { nombre: "Botella Vino Blanco Rueda", desc: "Bottle of white wine Rueda", precio: "17,00 €" },
+                    { nombre: "Botella Vino Rosado", desc: "Bottle of rose wine", precio: "17,00 €" },
+                    { nombre: "Sangria Jarra 1/Litro", desc: "Sangria Jug 1/Liter", precio: "15,00 €" },
+                    { nombre: "Botella de Champagne", desc: "Champagne Bottle", precio: "25,00 €" }
+                ]
+            },
+            "cocktails": {
+                titulo: "Cocktail / Cocktail",
+                platos: [
+                    { nombre: "Mojitos", desc: "Mojito tradicional", precio: "8,00 €" },
+                    { nombre: "Mojitos sin Alcohol", desc: "Non-alcoholic Mojito", precio: "6,00 €" },
+                    { nombre: "Caipiriña", desc: "Caipirinha", precio: "8,00 €" },
+                    { nombre: "Copa Doble de Sangría", desc: "Double Sangria Glass", precio: "7,00 €" }
+                ]
+            },
+            "alcohol": {
+                titulo: "Alcohol / Spirits",
+                platos: [
+                    { nombre: "Copa de Vermouth", desc: "Vermouth glass", precio: "5,00 €" },
+                    { nombre: "Licores, Orujos, Orochata, Licor 43", desc: "Liqueurs, pomace brandy, Licor 43", precio: "4,50 €" },
+                    { nombre: "Coñac, Anís", desc: "Cognac, Anise", precio: "3,00 €" },
+                    { nombre: "Baileys", desc: "Baileys Irish Cream", precio: "6,00 €" },
+                    { nombre: "Cubatas (Ron - Vodka) con refresco", desc: "Various spirits with soft drink", precio: "8,00 €" },
+                    { nombre: "Gin Tonic", desc: "Gin & Tonic", precio: "8,00 €" },
+                    { nombre: "Ginebras Importación", desc: "Martin Miller's - Larios 12 - Tanqueray - Bombay Sapphire", precio: "9,50 €" },
+                    { nombre: "Ron, Ginebra, Vodka (solo)", desc: "Rum, Gin, Vodka (neat)", precio: "6,50 €" },
+                    { nombre: "Whisky (solo)", desc: "Whisky (neat)", precio: "6,50 €" },
+                    { nombre: "Whisky (con refresco)", desc: "Whisky with soft drink", precio: "8,00 €" },
+                    { nombre: "Chupitos (Tequila, Orujos, etc...)", desc: "Shots (Tequila, pomace brandy, etc.)", precio: "2,50 €" },
+                    { nombre: "Granizado Doble con Alcohol", desc: "Double slush puppy with alcohol", precio: "9,00 €" }
+                ]
+            },
+            "cafes": {
+                titulo: "Cafés / Coffee",
+                aviso: "* Se incrementarán en 0,20€ extra de hielo",
+                platos: [
+                    { nombre: "Café Solo", desc: "Black coffee", precio: "1,50 €" },
+                    { nombre: "Café con leche", desc: "White coffee", precio: "2,00 €" },
+                    { nombre: "Cortado", desc: "Small white coffee", precio: "1,70 €" },
+                    { nombre: "Bombón", desc: "Small white coffee with condensed milk", precio: "1,70 €" },
+                    { nombre: "Capuchino", desc: "Cappuccino", precio: "3,00 €" },
+                    { nombre: "Carajillo", desc: "Black coffee with cognac", precio: "2,20 €" },
+                    { nombre: "Asiático", desc: "Special coffee and Cognac / Licor 43", precio: "3,50 €" },
+                    { nombre: "Infusiones", desc: "Tea", precio: "1,70 €" }
+                ]
+            },
+            "postres": {
+                titulo: "Carta de Postres / Desserts & Ice Creams",
+                platos: [
+                    { nombre: "Tarta de Queso al Horno", desc: "Baked cheesecake", precio: "6,00 €" },
+                    { nombre: "Tarrina Whisky", desc: "Biscuit, nata, whisky y azúcar quemado", precio: "6,00 €" },
+                    { nombre: "Crema Catalana", desc: "Helado de crema catalana", precio: "6,00 €" },
+                    { nombre: "Monoporción Tiramisú", desc: "Crema mascarpone, bizcocho, salsa de café y cacao en polvo (Sin Gluten)", precio: "5,50 €" },
+                    { nombre: "Pide Tu Magnum", desc: "Clásico, Cookies, Almendras (Sin Gluten)", precio: "3,00 €" },
+                    { nombre: "Magnum Pistacho", desc: "Helado sabor pistacho con chocolate", precio: "3,00 €" },
+                    { nombre: "Magnum Double Gold Caramel", desc: "Helado sabor galleta, chocolate golden y salsa de caramelo", precio: "3,00 €" },
+                    { nombre: "Choc'n Ball", desc: "Cono de nata cubierto de chocolate", precio: "3,00 €" },
+                    { nombre: "Cornetto Go", desc: "Nata y galleta de chocolate", precio: "2,70 €" },
+                    { nombre: "Cornetto XXL", desc: "Helado de vainilla tamaño XXL", precio: "3,00 €" },
+                    { nombre: "Cornetto XXL Chocolate", desc: "Helado de chocolate tamaño XXL", precio: "3,00 €" },
+                    { nombre: "Ben & Jerry's Chocolate Fudge Brownie (100 ml)", desc: "Chocolate con trocitos de brownie", precio: "4,00 €" },
+                    { nombre: "Ben & Jerry's Cookie Dough (100 ml)", desc: "Vainilla, galleta y chocolate", precio: "4,00 €" },
+                    { nombre: "Dinosaurus", desc: "Sándwich de vainilla con galleta Dinosaurus y chocolate", precio: "3,00 €" },
+                    { nombre: "Calippo Lima-Limón", desc: "Helado de lima y limón (Sin Gluten)", precio: "2,50 €" },
+                    { nombre: "Frigo Chuches", desc: "Mini helados sabor chuches (Sin Gluten)", precio: "2,00 €" },
+                    { nombre: "Twister", desc: "Sorbete de limón, naranja y fresa (Sin Gluten)", precio: "2,00 €" }
+                ]
+            }
+        };
+
+        function abrirModal(catKey) {
+            const datos = cartaDatos[catKey];
+            if (!datos) return;
+
+            document.getElementById('modalTitulo').textContent = datos.titulo;
+            const listaContenedor = document.getElementById('modalLista');
+            listaContenedor.innerHTML = '';
+
+            if (datos.platos.length === 0) {
+                listaContenedor.innerHTML = '<p class="sin-datos">Próximamente disponible.</p>';
+            } else {
+                datos.platos.forEach(plato => {
+                    const item = document.createElement('div');
+                    item.className = 'item-plato';
+                    item.innerHTML = `
+            <div class="item-info">
+              <h4>${plato.nombre}</h4>
+              <p>${plato.desc}</p>
+            </div>
+            <div class="item-precio">${plato.precio}</div>
+          `;
+                    listaContenedor.appendChild(item);
+                });
+
+                if (datos.aviso) {
+                    const avisoElem = document.createElement('p');
+                    avisoElem.className = 'modal-aviso';
+                    avisoElem.textContent = datos.aviso;
+                    listaContenedor.appendChild(avisoElem);
+                }
+            }
+
+            document.getElementById('modalCarta').style.display = 'flex';
+        }
+
+        function cerrarModal() {
+            document.getElementById('modalCarta').style.display = 'none';
+        }
+
+        function cerrarModalAfuera(e) {
+            if (e.target.id === 'modalCarta') {
+                cerrarModal();
+            }
+        }
+    </script>
 </body>
 
 </html>

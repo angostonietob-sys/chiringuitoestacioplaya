@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosotros | Chiringuito El Estacio Playa</title>
+
+    <!-- TIPOGRAFÍAS GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&family=Pacifico&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background-color: #fcfbf7;
+            color: #222;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* HEADER Y NAVEGACIÓN */
+        .header-principal {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 22px 50px;
+            background: #ffffff;
+            border-bottom: 1px solid #f2ede4;
+        }
+
+        .header-izq {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+        }
+
+        .logo-contenedor {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .logo-olas-svg {
+            width: 28px;
+            height: 20px;
+            fill: none;
+            stroke: #c98a42;
+            stroke-width: 2.6;
+            stroke-linecap: round;
+        }
+
+        .logo-texto {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.55rem;
+            font-weight: 800;
+            color: #111111;
+            letter-spacing: 0.2px;
+        }
+
+        .logo-texto em {
+            font-family: 'Pacifico', cursive;
+            font-style: normal;
+            color: #c98a42;
+            font-size: 1.6rem;
+            font-weight: 400;
+            margin-left: 3px;
+        }
+
+        .btn-reservar {
+            background-color: #c98a42;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+            padding: 9px 20px;
+            border-radius: 50px;
+            transition: background-color 0.2s ease;
+        }
+
+        .btn-reservar:hover {
+            background-color: #b57933;
+        }
+
+        .nav-derecha {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-derecha a {
+            text-decoration: none;
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.8px;
+            color: #4a4a4a;
+            transition: color 0.2s ease;
+        }
+
+        .nav-derecha a.activo,
+        .nav-derecha a:hover {
+            color: #c98a42;
+        }
+
+        /* CONTENEDOR PRINCIPAL */
+        .contenedor-galeria {
+            flex: 1;
+            max-width: 1240px;
+            width: 100%;
+            margin: 35px auto 60px;
+            padding: 0 25px;
+        }
+
+        .cabecera-nosotros {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .cabecera-nosotros span {
+            color: #c98a42;
+            font-size: 0.82rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .cabecera-nosotros h1 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #1a1a1a;
+            letter-spacing: 0.5px;
+        }
+
+        /* MOSAICO EQUILIBRADO Y PERFECTO (9 ELEMENTOS) */
+        .mosaico-galeria {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-auto-rows: 240px;
+            gap: 16px;
+        }
+
+        .foto-caja {
+            position: relative;
+            border-radius: 14px;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+            background-color: #f0ebe1;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .foto-caja:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(201, 138, 66, 0.22);
+        }
+
+        .foto-caja img,
+        .foto-caja video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .foto-caja:hover img,
+        .foto-caja:hover video {
+            transform: scale(1.04);
+        }
+
+        /* REGLAS DEL MOSAICO (100% SIN HUECOS) */
+        .item-atardecer {
+            grid-column: span 8;
+            grid-row: span 1;
+        }
+
+        .item-eclipse {
+            grid-column: span 4;
+            grid-row: span 2;
+        }
+
+        .item-eclipsesolar {
+            grid-column: span 4;
+            grid-row: span 2;
+        }
+
+        .item-cocktail {
+            grid-column: span 4;
+            grid-row: span 1;
+        }
+
+        .item-tardeo {
+            grid-column: span 4;
+            grid-row: span 1;
+        }
+
+        .item-video {
+            grid-column: span 4;
+            grid-row: span 1;
+        }
+
+        .item-terrazita {
+            grid-column: span 4;
+            grid-row: span 1;
+        }
+
+        .item-mariam {
+            grid-column: span 4;
+            grid-row: span 1;
+        }
+
+        .item-noche {
+            grid-column: span 4;
+            grid-row: span 1;
+        }
+
+        /* BADGE VÍDEO */
+        .badge-video {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(0, 0, 0, 0.65);
+            color: #ffffff;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .badge-video svg {
+            width: 12px;
+            height: 12px;
+            fill: #fff;
+        }
+
+        /* VISOR LIGHTBOX */
+        .visor-fondo {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.92);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        .visor-contenido {
+            position: relative;
+            max-width: 90vw;
+            max-height: 85vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .visor-contenido img,
+        .visor-contenido video {
+            max-width: 100%;
+            max-height: 85vh;
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            object-fit: contain;
+        }
+
+        .visor-cerrar {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            font-size: 2.2rem;
+            color: #ffffff;
+            background: none;
+            border: none;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        /* FOOTER */
+        .footer-principal {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            padding: 45px 50px 25px;
+            margin-top: auto;
+        }
+
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 35px;
+        }
+
+        .footer-col h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #c98a42;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-col p {
+            font-size: 0.88rem;
+            color: #bbb;
+            line-height: 1.7;
+            margin-bottom: 8px;
+        }
+
+        .footer-col a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .footer-col a:hover {
+            color: #c98a42;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #777;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 992px) {
+            .mosaico-galeria {
+                grid-template-columns: repeat(6, 1fr);
+                grid-auto-rows: 200px;
+            }
+
+            .item-atardecer {
+                grid-column: span 6;
+            }
+
+            .item-eclipse {
+                grid-column: span 3;
+                grid-row: span 2;
+            }
+
+            .item-eclipsesolar {
+                grid-column: span 3;
+                grid-row: span 2;
+            }
+
+            .item-cocktail {
+                grid-column: span 3;
+            }
+
+            .item-tardeo {
+                grid-column: span 3;
+            }
+
+            .item-video {
+                grid-column: span 3;
+            }
+
+            .item-terrazita {
+                grid-column: span 3;
+            }
+
+            .item-mariam {
+                grid-column: span 3;
+            }
+
+            .item-noche {
+                grid-column: span 3;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .header-principal {
+                padding: 15px 20px;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .mosaico-galeria {
+                display: flex;
+                flex-direction: column;
+                gap: 14px;
+            }
+
+            .foto-caja {
+                height: 260px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- CABECERA PRINCIPAL -->
+    <header class="header-principal">
+        <div class="header-izq">
+            <a href="index.html" class="logo-contenedor">
+                <svg class="logo-olas-svg" viewBox="0 0 32 24">
+                    <path d="M2 5 Q 8 1, 16 5 T 30 5" />
+                    <path d="M2 12 Q 8 8, 16 12 T 30 12" />
+                    <path d="M2 19 Q 8 15, 16 19 T 30 19" />
+                </svg>
+                <span class="logo-texto">El Estacio <em>Playa</em></span>
+            </a>
+            <a href="https://wa.me/34644332518" target="_blank" class="btn-reservar">RESERVAR MESA</a>
+        </div>
+
+        <nav class="nav-derecha">
+            <a href="index.html">INICIO</a>
+            <a href="lacarta.html">LA CARTA</a>
+            <a href="nosotros.html" class="activo">NOSOTROS</a>
+        </nav>
+    </header>
+
+    <!-- CONTENEDOR PRINCIPAL: MOSAICO 9 ELEMENTOS (8 FOTOS + 1 VÍDEO) -->
+    <main class="contenedor-galeria">
+
+        <div class="cabecera-nosotros">
+            <span>Momentos en El Estacio</span>
+            <h1>Atardeceres, Música y Noches Junto al Mar</h1>
+        </div>
+
+        <div class="mosaico-galeria">
+
+            <!-- 1. ATARDECER -->
+            <div class="foto-caja item-atardecer" onclick="verElemento('foto', 'atardecerchiringuitoestacio.jpeg')">
+                <img src="atardecerchiringuitoestacio.jpeg" alt="Atardecer en El Estacio Playa">
+            </div>
+
+            <!-- 2. AMBIENTE ECLIPSE (Vertical alta) -->
+            <div class="foto-caja item-eclipse" onclick="verElemento('foto', 'ambienteeclipse.jpeg')">
+                <img src="ambienteeclipse.jpeg" alt="Ambiente Eclipse en El Estacio">
+            </div>
+
+            <!-- 3. ECLIPSE SOLAR CHIRINGUITO (Vertical alta) -->
+            <div class="foto-caja item-eclipsesolar" onclick="verElemento('foto', 'eclipsesolarchiringuito.jpeg')">
+                <img src="eclipsesolarchiringuito.jpeg" alt="Eclipse Solar en El Estacio Playa">
+            </div>
+
+            <!-- 4. COCKTAIL -->
+            <div class="foto-caja item-cocktail" onclick="verElemento('foto', 'cocktailalatardecer.jpeg')">
+                <img src="cocktailalatardecer.jpeg" alt="Cocktail al atardecer en El Estacio">
+            </div>
+
+            <!-- 5. TARDEO -->
+            <div class="foto-caja item-tardeo" onclick="verElemento('foto', 'tardeo.jpeg')">
+                <img src="tardeo.jpeg" alt="Tardeo en el chiringuito">
+            </div>
+
+            <!-- 6. VÍDEO EN DIRECTO -->
+            <div class="foto-caja item-video" onclick="verElemento('video', 'musicachiringuito.mp4')">
+                <div class="badge-video">
+                    <svg viewBox="0 0 24 24">
+                        <polygon points="5 3 19 12 5 21 5 3" />
+                    </svg>
+                    Música en directo
+                </div>
+                <video src="musicachiringuito.mp4" autoplay loop muted playsinline preload="metadata"></video>
+            </div>
+
+            <!-- 7. TERRAZITA -->
+            <div class="foto-caja item-terrazita" onclick="verElemento('foto', 'terrazita.jpeg')">
+                <img src="terrazita.jpeg" alt="Terraza frente al mar">
+            </div>
+
+            <!-- 8. CHIRINGUITO MARIAM (Ruta .jpg) -->
+            <div class="foto-caja item-mariam" onclick="verElemento('foto', 'chiringuitomariam.jpg')">
+                <img src="chiringuitomariam.jpg" alt="Ambiente en Chiringuito El Estacio Playa">
+            </div>
+
+            <!-- 9. NOCHE EN EL CHIRINGUITO -->
+            <div class="foto-caja item-noche" onclick="verElemento('foto', 'chiringuitonoche.jpeg')">
+                <img src="chiringuitonoche.jpeg" alt="Noches en Chiringuito El Estacio Playa">
+            </div>
+
+        </div>
+    </main>
+
+    <!-- VISOR LIGHTBOX -->
+    <div id="visorElemento" class="visor-fondo" onclick="cerrarVisorAfuera(event)">
+        <div class="visor-contenido">
+            <button class="visor-cerrar" onclick="cerrarVisor()">&times;</button>
+            <img id="visorFoto" src="" alt="Elemento ampliado" style="display: none;">
+            <video id="visorVideo" src="" controls autoplay style="display: none;"></video>
+        </div>
+    </div>
+
+    <!-- FOOTER PRINCIPAL -->
+    <footer class="footer-principal">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3>Chiringuito El Estacio Playa</h3>
+                <p>📍 La Manga del Mar Menor, Murcia km 14,5</p>
+            </div>
+
+            <div class="footer-col">
+                <h3>Enlaces</h3>
+                <p><a href="index.html">Inicio</a></p>
+                <p><a href="lacarta.html">La Carta</a></p>
+                <p><a href="nosotros.html">Nosotros</a></p>
+            </div>
+
+            <div class="footer-col">
+                <h3>Reservas</h3>
+                <p>📞 Teléfono / WhatsApp:</p>
+                <p><a href="https://wa.me/34644332518" target="_blank">+34 644 33 25 18</a></p>
+                <p>Abierto en temporada de verano</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Chiringuito El Estacio Playa. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- SCRIPT LIGHTBOX -->
+    <script>
+        function verElemento(tipo, src) {
+            const visor = document.getElementById('visorElemento');
+            const imgElem = document.getElementById('visorFoto');
+            const videoElem = document.getElementById('visorVideo');
+
+            if (tipo === 'foto') {
+                videoElem.pause();
+                videoElem.style.display = 'none';
+                videoElem.src = '';
+
+                imgElem.src = src;
+                imgElem.style.display = 'block';
+            } else if (tipo === 'video') {
+                imgElem.style.display = 'none';
+                imgElem.src = '';
+
+                videoElem.src = src;
+                videoElem.style.display = 'block';
+                videoElem.play();
+            }
+
+            visor.style.display = 'flex';
+        }
+
+        function cerrarVisor() {
+            const visor = document.getElementById('visorElemento');
+            const imgElem = document.getElementById('visorFoto');
+            const videoElem = document.getElementById('visorVideo');
+
+            videoElem.pause();
+            videoElem.src = '';
+            imgElem.src = '';
+            visor.style.display = 'none';
+        }
+
+        function cerrarVisorAfuera(e) {
+            if (e.target.id === 'visorElemento') {
+                cerrarVisor();
+            }
+        }
+    </script>
+
+</body>
+
+</html>
