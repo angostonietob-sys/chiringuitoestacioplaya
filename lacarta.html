@@ -154,6 +154,11 @@
             padding: 20px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
             transition: transform 0.25s ease, box-shadow 0.25s ease;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+            overflow: hidden;
         }
 
         .tarjeta-cat:hover {
@@ -168,6 +173,9 @@
             letter-spacing: 1.5px;
             margin-bottom: 20px;
             text-transform: uppercase;
+            text-shadow: 0 1px 4px rgba(255, 255, 255, 0.9), 0 0 10px rgba(255, 255, 255, 0.9);
+            position: relative;
+            z-index: 2;
         }
 
         .btn-ver {
@@ -181,12 +189,28 @@
             border-radius: 50px;
             cursor: pointer;
             transition: all 0.2s ease;
+            position: relative;
+            z-index: 2;
         }
 
         .btn-ver:hover {
             background-color: transparent;
             color: #c98a42;
         }
+
+        /* FONDOS DE LAS 12 TARJETAS */
+        .card-tapas { background-image: url('croquetas.jpg'); }
+        .card-raciones { background-image: url('alitas.jpeg'); }
+        .card-ensaladas { background-image: url('tomate con tun.jpg'); }
+        .card-pescados { background-image: url('pata pulpo.jpg'); }
+        .card-fuertes { background-image: url('entrecot.jpg'); }
+        .card-refrescos { background-image: url('aguagas.jpg'); }
+        .card-cervezas { background-image: url('coronita.jpg'); }
+        .card-vino { background-image: url('vino blanco.jpg'); }
+        .card-cocktails { background-image: url('mojito.jpg'); }
+        .card-alcohol { background-image: url('licor.jpg'); }
+        .card-cafes { background-image: url('nuestroasiatico.jpg'); }
+        .card-postres { background-image: url('crema catalana.jpg'); }
 
         /* TIRA FINA COMPACTA DE ALÉRGENOS */
         .tira-alergenos-contenedor {
@@ -535,62 +559,62 @@
         <p class="titulo-seccion">SELECCIONA UNA CATEGORÍA PARA VER LOS PLATOS</p>
 
         <div class="grid-categorias">
-            <div class="tarjeta-cat">
+            <div class="tarjeta-cat card-tapas">
                 <h2>TAPAS</h2>
                 <button class="btn-ver" onclick="abrirModal('tapas')">VER</button>
             </div>
 
-            <div class="tarjeta-cat">
+            <div class="tarjeta-cat card-raciones">
                 <h2>RACIONES</h2>
                 <button class="btn-ver" onclick="abrirModal('raciones')">VER</button>
             </div>
 
-            <div class="tarjeta-cat">
+            <div class="tarjeta-cat card-ensaladas">
                 <h2>ENSALADAS</h2>
                 <button class="btn-ver" onclick="abrirModal('ensaladas')">VER</button>
             </div>
 
-            <div class="tarjeta-cat">
+            <div class="tarjeta-cat card-pescados">
                 <h2>PESCADOS</h2>
                 <button class="btn-ver" onclick="abrirModal('pescados')">VER</button>
             </div>
 
-            <div class="tarjeta-cat">
+            <div class="tarjeta-cat card-fuertes">
                 <h2>PLATOS FUERTES</h2>
                 <button class="btn-ver" onclick="abrirModal('platos-fuertes')">VER</button>
             </div>
 
-            <div class="tarjeta-cat">
+            <div class="tarjeta-cat card-refrescos">
                 <h2>REFRESCOS</h2>
                 <button class="btn-ver" onclick="abrirModal('refrescos')">VER</button>
             </div>
 
-            <div class="tarjeta-cat">
+            <div class="tarjeta-cat card-cervezas">
                 <h2>CERVEZAS</h2>
                 <button class="btn-ver" onclick="abrirModal('cervezas')">VER</button>
             </div>
 
-            <div class="tarjeta-cat">
+            <div class="tarjeta-cat card-vino">
                 <h2>VINO</h2>
                 <button class="btn-ver" onclick="abrirModal('vino')">VER</button>
             </div>
 
-            <div class="tarjeta-cat">
+            <div class="tarjeta-cat card-cocktails">
                 <h2>COCKTAILS</h2>
                 <button class="btn-ver" onclick="abrirModal('cocktails')">VER</button>
             </div>
 
-            <div class="tarjeta-cat">
+            <div class="tarjeta-cat card-alcohol">
                 <h2>ALCOHOL / COPAS</h2>
                 <button class="btn-ver" onclick="abrirModal('alcohol')">VER</button>
             </div>
 
-            <div class="tarjeta-cat">
+            <div class="tarjeta-cat card-cafes">
                 <h2>CAFÉS</h2>
                 <button class="btn-ver" onclick="abrirModal('cafes')">VER</button>
             </div>
 
-            <div class="tarjeta-cat">
+            <div class="tarjeta-cat card-postres">
                 <h2>CARTA DE POSTRES</h2>
                 <button class="btn-ver" onclick="abrirModal('postres')">VER</button>
             </div>
