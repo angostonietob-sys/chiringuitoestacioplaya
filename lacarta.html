@@ -199,18 +199,53 @@
         }
 
         /* FONDOS DE LAS 12 TARJETAS */
-        .card-tapas { background-image: url('croquetas.jpg'); }
-        .card-raciones { background-image: url('alitas.jpeg'); }
-        .card-ensaladas { background-image: url('tomate con tun.jpg'); }
-        .card-pescados { background-image: url('pata pulpo.jpg'); }
-        .card-fuertes { background-image: url('entrecot.jpg'); }
-        .card-refrescos { background-image: url('aguagas.jpg'); }
-        .card-cervezas { background-image: url('coronita.jpg'); }
-        .card-vino { background-image: url('vino blanco.jpg'); }
-        .card-cocktails { background-image: url('mojito.jpg'); }
-        .card-alcohol { background-image: url('licor.jpg'); }
-        .card-cafes { background-image: url('nuestroasiatico.jpg'); }
-        .card-postres { background-image: url('crema catalana.jpg'); }
+        .card-tapas {
+            background-image: url('croquetas.jpg');
+        }
+
+        .card-raciones {
+            background-image: url('alitas.jpeg');
+        }
+
+        .card-ensaladas {
+            background-image: url('tomate con tun.jpg');
+        }
+
+        .card-pescados {
+            background-image: url('pata pulpo.jpg');
+        }
+
+        .card-fuertes {
+            background-image: url('entrecot.jpg');
+        }
+
+        .card-refrescos {
+            background-image: url('aguagas.jpg');
+        }
+
+        .card-cervezas {
+            background-image: url('coronita.jpg');
+        }
+
+        .card-vino {
+            background-image: url('vino blanco.jpg');
+        }
+
+        .card-cocktails {
+            background-image: url('mojito.jpg');
+        }
+
+        .card-alcohol {
+            background-image: url('licor.jpg');
+        }
+
+        .card-cafes {
+            background-image: url('nuestroasiatico.jpg');
+        }
+
+        .card-postres {
+            background-image: url('crema catalana.jpg');
+        }
 
         /* TIRA FINA COMPACTA DE ALÉRGENOS */
         .tira-alergenos-contenedor {
@@ -544,7 +579,7 @@
                 </svg>
                 <span class="logo-texto">El Estacio <em>Playa</em></span>
             </a>
-            <a href="https://wa.me/34XXXXXXXXX" target="_blank" class="btn-reservar">RESERVAR MESA</a>
+            <a href="https://wa.me/34644332518" target="_blank" class="btn-reservar">RESERVAR MESA</a>
         </div>
 
         <nav class="nav-derecha">
@@ -715,9 +750,9 @@
         </div>
     </footer>
 
-    <!-- JAVASCRIPT -->
+    <!-- JAVASCRIPT DINÁMICO CONECTADO AL ADMIN -->
     <script>
-        const cartaDatos = {
+        const defaultCartaDatos = {
             "tapas": {
                 titulo: "Tapas / Snacks",
                 platos: [
@@ -864,8 +899,8 @@
                     { nombre: "Tarta de Queso al Horno", desc: "Baked cheesecake", precio: "6,00 €" },
                     { nombre: "Tarrina Whisky", desc: "Biscuit, nata, whisky y azúcar quemado", precio: "6,00 €" },
                     { nombre: "Crema Catalana", desc: "Helado de crema catalana", precio: "6,00 €" },
-                    { nombre: "Monoporción Tiramisú", desc: "Crema mascarpone, bizcocho, salsa de café y cacao en polvo (Sin Gluten)", precio: "5,50 €" },
-                    { nombre: "Pide Tu Magnum", desc: "Clásico, Cookies, Almendras (Sin Gluten)", precio: "3,00 €" },
+                    { nombre: "Monoporción Tiramisú", desc: "Crema mascarpone, bizcocho, salsa de café y cacao en polvo", precio: "5,50 €" },
+                    { nombre: "Pide Tu Magnum", desc: "Clásico, Cookies, Almendras", precio: "3,00 €" },
                     { nombre: "Magnum Pistacho", desc: "Helado sabor pistacho con chocolate", precio: "3,00 €" },
                     { nombre: "Magnum Double Gold Caramel", desc: "Helado sabor galleta, chocolate golden y salsa de caramelo", precio: "3,00 €" },
                     { nombre: "Choc'n Ball", desc: "Cono de nata cubierto de chocolate", precio: "3,00 €" },
@@ -875,34 +910,51 @@
                     { nombre: "Ben & Jerry's Chocolate Fudge Brownie (100 ml)", desc: "Chocolate con trocitos de brownie", precio: "4,00 €" },
                     { nombre: "Ben & Jerry's Cookie Dough (100 ml)", desc: "Vainilla, galleta y chocolate", precio: "4,00 €" },
                     { nombre: "Dinosaurus", desc: "Sándwich de vainilla con galleta Dinosaurus y chocolate", precio: "3,00 €" },
-                    { nombre: "Calippo Lima-Limón", desc: "Helado de lima y limón (Sin Gluten)", precio: "2,50 €" },
-                    { nombre: "Frigo Chuches", desc: "Mini helados sabor chuches (Sin Gluten)", precio: "2,00 €" },
-                    { nombre: "Twister", desc: "Sorbete de limón, naranja y fresa (Sin Gluten)", precio: "2,00 €" }
+                    { nombre: "Calippo Lima-Limón", desc: "Helado de lima y limón", precio: "2,50 €" },
+                    { nombre: "Frigo Chuches", desc: "Mini helados sabor chuches", precio: "2,00 €" },
+                    { nombre: "Twister", desc: "Sorbete de limón, naranja y fresa", precio: "2,00 €" }
                 ]
             }
         };
 
+        let currentOpenCategory = null;
+
+        function getLiveCarta() {
+            const raw = localStorage.getItem('estacio_carta_datos');
+            if (!raw) {
+                localStorage.setItem('estacio_carta_datos', JSON.stringify(defaultCartaDatos));
+                return defaultCartaDatos;
+            }
+            try {
+                return JSON.parse(raw);
+            } catch (e) {
+                return defaultCartaDatos;
+            }
+        }
+
         function abrirModal(catKey) {
-            const datos = cartaDatos[catKey];
+            currentOpenCategory = catKey;
+            const datosMenu = getLiveCarta();
+            const datos = datosMenu[catKey];
             if (!datos) return;
 
             document.getElementById('modalTitulo').textContent = datos.titulo;
             const listaContenedor = document.getElementById('modalLista');
             listaContenedor.innerHTML = '';
 
-            if (datos.platos.length === 0) {
+            if (!datos.platos || datos.platos.length === 0) {
                 listaContenedor.innerHTML = '<p class="sin-datos">Próximamente disponible.</p>';
             } else {
                 datos.platos.forEach(plato => {
                     const item = document.createElement('div');
                     item.className = 'item-plato';
                     item.innerHTML = `
-            <div class="item-info">
-              <h4>${plato.nombre}</h4>
-              <p>${plato.desc}</p>
-            </div>
-            <div class="item-precio">${plato.precio}</div>
-          `;
+                        <div class="item-info">
+                            <h4>${plato.nombre}</h4>
+                            <p>${plato.desc || ''}</p>
+                        </div>
+                        <div class="item-precio">${plato.precio}</div>
+                    `;
                     listaContenedor.appendChild(item);
                 });
 
@@ -919,6 +971,7 @@
 
         function cerrarModal() {
             document.getElementById('modalCarta').style.display = 'none';
+            currentOpenCategory = null;
         }
 
         function cerrarModalAfuera(e) {
@@ -926,6 +979,13 @@
                 cerrarModal();
             }
         }
+
+        // Actualización automática instantánea si la modal está abierta mientras cambias en el panel
+        window.addEventListener('storage', (e) => {
+            if (e.key === 'estacio_carta_datos' && currentOpenCategory) {
+                abrirModal(currentOpenCategory);
+            }
+        });
     </script>
 </body>
 

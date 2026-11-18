@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel de Precios | Chiringuito El Estacio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'Montserrat', sans-serif; }
+    .serif-title { font-family: 'Playfair Display', serif; }
+  </style>
+</head>
+<body class="bg-stone-900 text-stone-100 min-h-screen font-sans">
+
+  <!-- MODAL LOGIN -->
+  <div id="login-modal" class="fixed inset-0 bg-stone-950/90 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+    <div class="bg-white text-stone-900 w-full max-w-sm p-6 rounded-2xl shadow-2xl border border-stone-200">
+      <div class="text-center mb-5">
+        <h2 class="serif-title text-xl font-black text-stone-900">El Estacio Playa</h2>
+        <p class="text-xs text-stone-500 font-bold uppercase tracking-wider mt-1">Panel de Control de Precios</p>
+      </div>
+      <form onsubmit="handleLogin(event)" class="space-y-3">
+        <div>
+          <label class="block text-[11px] font-bold uppercase tracking-wider text-stone-500 mb-1">Usuario</label>
+          <input id="user-input" type="text" placeholder="chiringuitoestacio" required class="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2 text-sm font-medium outline-none focus:border-[#c98a42]">
+        </div>
+        <div>
+          <label class="block text-[11px] font-bold uppercase tracking-wider text-stone-500 mb-1">Contraseña</label>
+          <input id="pass-input" type="password" placeholder="10000" required class="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2 text-sm font-medium outline-none focus:border-[#c98a42]">
+        </div>
+        <p id="login-error" class="text-xs font-bold text-red-500 hidden text-center">Usuario o contraseña incorrectos</p>
+        <button type="submit" class="w-full bg-[#c98a42] hover:bg-[#b57933] text-white font-bold py-2.5 rounded-xl transition text-sm">
+          Entrar al Panel
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- PANEL ADMIN -->
+  <div id="admin-panel" class="hidden">
+    <header class="border-b border-stone-800 bg-stone-900/90 backdrop-blur-md sticky top-0 z-40">
+      <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+        <div>
+          <h1 class="serif-title text-lg font-bold text-white">Chiringuito El Estacio <span class="text-[#c98a42]">Playa</span></h1>
+          <p class="text-[11px] text-stone-400">Modifica precios, añade o borra platos en tiempo real</p>
+        </div>
+        <div class="flex items-center gap-3">
+          <a href="lacarta.html" target="_blank" class="bg-[#c98a42] hover:bg-[#b57933] text-white font-bold text-xs px-3.5 py-2 rounded-xl transition flex items-center gap-1.5">
+            Ver Carta Pública ↗
+          </a>
+          <button onclick="logout()" class="text-xs text-stone-400 hover:text-red-400 font-bold px-2 py-1 transition">Salir</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 py-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
+      
+      <!-- FORMULARIO AÑADIR -->
+      <section class="lg:col-span-4 bg-white text-stone-900 p-5 rounded-2xl shadow-xl border border-stone-100 h-fit">
+        <h2 class="text-sm font-extrabold uppercase tracking-wider text-stone-900 mb-3 text-[#c98a42]">➕ Añadir Producto</h2>
+        <form onsubmit="handleAddProduct(event)" class="space-y-3">
+          <div>
+            <label class="block text-[10px] font-bold uppercase text-stone-500 mb-1">Categoría</label>
+            <select id="prod-category" class="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2 text-xs font-semibold outline-none focus:border-[#c98a42]">
+              <option value="tapas">Tapas / Snacks</option>
+              <option value="raciones">Raciones</option>
+              <option value="ensaladas">Ensaladas / Salad</option>
+              <option value="pescados">Pescados</option>
+              <option value="platos-fuertes">Platos Fuertes / Main Courses</option>
+              <option value="refrescos">Refrescos / Cold Drinks</option>
+              <option value="cervezas">Cervezas / Beers</option>
+              <option value="vino">Vinos / Wine</option>
+              <option value="cocktails">Cocktail / Cocktail</option>
+              <option value="alcohol">Alcohol / Spirits</option>
+              <option value="cafes">Cafés / Coffee</option>
+              <option value="postres">Carta de Postres</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-[10px] font-bold uppercase text-stone-500 mb-1">Nombre</label>
+            <input id="prod-name" type="text" placeholder="Ej: Espeto de Sardinas" required class="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2 text-xs font-medium outline-none focus:border-[#c98a42]">
+          </div>
+
+          <div>
+            <label class="block text-[10px] font-bold uppercase text-stone-500 mb-1">Descripción / Inglés</label>
+            <input id="prod-desc" type="text" placeholder="Ej: Grilled sardines on skewer" class="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2 text-xs font-medium outline-none focus:border-[#c98a42]">
+          </div>
+
+          <div>
+            <label class="block text-[10px] font-bold uppercase text-stone-500 mb-1">Precio (€)</label>
+            <input id="prod-price" type="text" placeholder="Ej: 7,50 €" required class="w-full bg-stone-50 border border-stone-200 rounded-xl px-3 py-2 text-xs font-bold text-[#c98a42] outline-none focus:border-[#c98a42]">
+          </div>
+
+          <button type="submit" class="w-full bg-[#c98a42] hover:bg-[#b57933] text-white font-bold py-2.5 rounded-xl transition text-xs uppercase tracking-wider">
+            Guardar en Carta
+          </button>
+        </form>
+      </section>
+
+      <!-- LISTADO CON EDICIÓN Y BORRADO -->
+      <section class="lg:col-span-8 space-y-3">
+        <div class="flex items-center justify-between flex-wrap gap-2">
+          <div class="flex items-center gap-1.5 overflow-x-auto pb-1 max-w-full text-xs">
+            <select id="filter-select" onchange="changeFilter(this.value)" class="bg-stone-800 text-white font-bold text-xs px-3 py-2 rounded-xl border border-stone-700 outline-none">
+              <option value="all">Todas las Categorías</option>
+              <option value="tapas">Tapas</option>
+              <option value="raciones">Raciones</option>
+              <option value="ensaladas">Ensaladas</option>
+              <option value="pescados">Pescados</option>
+              <option value="platos-fuertes">Platos Fuertes</option>
+              <option value="refrescos">Refrescos</option>
+              <option value="cervezas">Cervezas</option>
+              <option value="vino">Vinos</option>
+              <option value="cocktails">Cocktails</option>
+              <option value="alcohol">Alcohol / Copas</option>
+              <option value="cafes">Cafés</option>
+              <option value="postres">Postres</option>
+            </select>
+          </div>
+          <button onclick="restoreDefaultMenu()" class="text-xs text-stone-400 hover:text-amber-400 underline">Restaurar Carta Original</button>
+        </div>
+
+        <div id="admin-dishes-list" class="space-y-2"></div>
+      </section>
+
+    </main>
+  </div>
+
+  <script>
+    const defaultData = {
+      "tapas": {
+        titulo: "Tapas / Snacks",
+        platos: [
+          { nombre: "Croquetas (Unidad)", desc: "Croquetas (each)", precio: "2,00 €" },
+          { nombre: "Patatas Bravas", desc: "Potatoes in spicy tomato sauce", precio: "6,00 €" },
+          { nombre: "Ensaladilla Rusa", desc: "Russian Salad", precio: "4,50 €" },
+          { nombre: "Marineras", desc: "Bread stickwith Russian salad and anchovy", precio: "2,80 €" },
+          { nombre: "Bolsa de patatas", desc: "Packet of chips", precio: "1,70 €" },
+          { nombre: "Bote de aceitunas", desc: "Can of Olives", precio: "2,00 €" },
+          { nombre: "Almendras", desc: "Fried almonds", precio: "2,30 €" },
+          { nombre: "Anchoas (Unidad)", desc: "Anchovy (each)", precio: "1,20 €" },
+          { nombre: "Caballitos (Unidad)", desc: "Horses (Unit)", precio: "2,50 €" },
+          { nombre: "Boquerones en Vinagre (8 Unidades)", desc: "Anchovies in Vinegar (Unit)", precio: "6,00 €" },
+          { nombre: "Monodosis Salsas", desc: "Alioli, Ketchus, Mahonesa, etc...", precio: "0,50 €" },
+          { nombre: "Panes (Unidad)", desc: "Bread", precio: "1,00 €" }
+        ]
+      },
+      "raciones": {
+        titulo: "Raciones",
+        platos: [
+          { nombre: "Patatas Fritas", desc: "Chips", precio: "5,50 €" },
+          { nombre: "Pechuguitas de Pollo con Patatas", desc: "Chicken Breasts", precio: "9,50 €" },
+          { nombre: "Alitas Pollo", desc: "Chicken Wings", precio: "8,00 €" }
+        ]
+      },
+      "ensaladas": {
+        titulo: "Ensaladas / Salad",
+        platos: [
+          { nombre: "Ensalada César con Pollo", desc: "Caesar salad with chicken", precio: "15,00 €" },
+          { nombre: "Ensalada Rulo de Cabra con Miel y Mostaza", desc: "Salad Goat Honey and mustard", precio: "16,00 €" },
+          { nombre: "Tomate con Atún", desc: "Fresh tomato with tuna (sin Atún 9,00 €)", precio: "13,00 €" }
+        ]
+      },
+      "pescados": {
+        titulo: "Pescados",
+        platos: [
+          { nombre: "Calamares Andaluza (*)", desc: "Deep fried squid rings", precio: "15,00 €" },
+          { nombre: "Chopitos (*)", desc: "Deep fried baby squid", precio: "15,00 €" },
+          { nombre: "Sardinas (12) (*)", desc: "Sardines (12)", precio: "15,00 €" },
+          { nombre: "Boquerones (*)", desc: "Fried whitebait", precio: "16,00 €" },
+          { nombre: "Almejas al ajillo", desc: "Clams \"ajillo\" style", precio: "17,00 €" },
+          { nombre: "Gambas al ajillo", desc: "Garlic prawns", precio: "17,00 €" },
+          { nombre: "Calamar plancha", desc: "Squid iron", precio: "30,50 €" },
+          { nombre: "Cazón Adobado", desc: "Marinated dogfish", precio: "13,50 €" },
+          { nombre: "Fritura Variada", desc: "Varied Fried fish", precio: "22,00 €" },
+          { nombre: "Mejillones al Vapor", desc: "Steamed mussels", precio: "12,00 €" },
+          { nombre: "Pata Pulpo", desc: "Octopus Leg", precio: "22,50 €" },
+          { nombre: "Bacalao Encebollado", desc: "Cod with onions", precio: "18,00 €" }
+        ]
+      },
+      "platos-fuertes": {
+        titulo: "Platos Fuertes / Main Courses",
+        platos: [
+          { nombre: "Hamburguesa con Patatas", desc: "Hamburgers with potatoes", precio: "12,50 €" },
+          { nombre: "Hamburguesa \"ESTACIO\"", desc: "Bacon, Cebolla Frita y Patatas Fritas", precio: "15,00 €" },
+          { nombre: "Entrecot con Patatas", desc: "Entrecote with Potatoes", precio: "22,00 €" },
+          { nombre: "Hamburguesa Vegana", desc: "Vegan Burger", precio: "11,50 €" },
+          { nombre: "Perrito con Patatas", desc: "Hot Dog with Potatoes", precio: "6,00 €" }
+        ]
+      },
+      "refrescos": {
+        titulo: "Refrescos / Cold Drinks",
+        platos: [
+          { nombre: "Gaseosa", desc: "Clear Lemonade", precio: "2,00 €" },
+          { nombre: "Agua mineral 1/2 litro", desc: "1/2 litre still water", precio: "2,00 €" },
+          { nombre: "Agua con Gas 33 cl.", desc: "33 cl. fizzy water", precio: "2,50 €" },
+          { nombre: "Lata Refresco", desc: "Can of soft drink", precio: "2,50 €" },
+          { nombre: "Zumos", desc: "Fruit juice", precio: "2,00 €" },
+          { nombre: "Granizado Normal Limón", desc: "Slash puppy Lemon", precio: "3,50 €" },
+          { nombre: "Granizado Grande Limón", desc: "Slash puppy big Lemon", precio: "6,00 €" }
+        ]
+      },
+      "cervezas": {
+        titulo: "Cervezas / Beers",
+        platos: [
+          { nombre: "Caña (Mahou)", desc: "Draught beer", precio: "2,60 €" },
+          { nombre: "Caña Doble Cerveza", desc: "Draught beer beer", precio: "4,80 €" },
+          { nombre: "Tercio (Mahou o similar)", desc: "Bottled beer", precio: "2,90 €" },
+          { nombre: "Coronita", desc: "Coronita", precio: "4,00 €" },
+          { nombre: "Alhambra Reserva (Tercio)", desc: "Special Bottled beer", precio: "4,00 €" },
+          { nombre: "Cerveza sin Alcohol", desc: "Alcohol free draught beer", precio: "2,90 €" },
+          { nombre: "Jarra de Cerveza 1 Litro", desc: "Jug of beer", precio: "11,00 €" }
+        ]
+      },
+      "vino": {
+        titulo: "Vinos / Wine",
+        platos: [
+          { nombre: "Vaso Tinto de Verano", desc: "Glass summer wine", precio: "2,80 €" },
+          { nombre: "Vaso Tinto de Verano Doble", desc: "Dougle Glass summer wine", precio: "5,00 €" },
+          { nombre: "Jarra Tinto 1/Litro", desc: "Red Jug 1/Liter", precio: "13,00 €" },
+          { nombre: "Copa Vino Tinto Rioja", desc: "Glass of house red wine", precio: "3,50 €" },
+          { nombre: "Copa Vino Blanco Rueda", desc: "Glass of white wine Rueda", precio: "3,80 €" },
+          { nombre: "Copa Vino Rosado", desc: "Glass of rose wine", precio: "3,80 €" },
+          { nombre: "Botella Vino Tinto Rioja", desc: "Bottle of red wine Rioja", precio: "15,00 €" },
+          { nombre: "Botella Vino Blanco Rueda", desc: "Bottle of white wine Rueda", precio: "17,00 €" },
+          { nombre: "Botella Vino Rosado", desc: "Bottle of rose wine", precio: "17,00 €" },
+          { nombre: "Sangria Jarra 1/Litro", desc: "Sangria Jug 1/Liter", precio: "15,00 €" },
+          { nombre: "Botella de Champagne", desc: "Champagne Bottle", precio: "25,00 €" }
+        ]
+      },
+      "cocktails": {
+        titulo: "Cocktail / Cocktail",
+        platos: [
+          { nombre: "Mojitos", desc: "Mojito tradicional", precio: "8,00 €" },
+          { nombre: "Mojitos sin Alcohol", desc: "Non-alcoholic Mojito", precio: "6,00 €" },
+          { nombre: "Caipiriña", desc: "Caipirinha", precio: "8,00 €" },
+          { nombre: "Copa Doble de Sangría", desc: "Double Sangria Glass", precio: "7,00 €" }
+        ]
+      },
+      "alcohol": {
+        titulo: "Alcohol / Spirits",
+        platos: [
+          { nombre: "Copa de Vermouth", desc: "Vermouth glass", precio: "5,00 €" },
+          { nombre: "Licores, Orujos, Orochata, Licor 43", desc: "Liqueurs, pomace brandy, Licor 43", precio: "4,50 €" },
+          { nombre: "Coñac, Anís", desc: "Cognac, Anise", precio: "3,00 €" },
+          { nombre: "Baileys", desc: "Baileys Irish Cream", precio: "6,00 €" },
+          { nombre: "Cubatas (Ron - Vodka) con refresco", desc: "Various spirits with soft drink", precio: "8,00 €" },
+          { nombre: "Gin Tonic", desc: "Gin & Tonic", precio: "8,00 €" },
+          { nombre: "Ginebras Importación", desc: "Martin Miller's - Larios 12 - Tanqueray - Bombay Sapphire", precio: "9,50 €" },
+          { nombre: "Ron, Ginebra, Vodka (solo)", desc: "Rum, Gin, Vodka (neat)", precio: "6,50 €" },
+          { nombre: "Whisky (solo)", desc: "Whisky (neat)", precio: "6,50 €" },
+          { nombre: "Whisky (con refresco)", desc: "Whisky with soft drink", precio: "8,00 €" },
+          { nombre: "Chupitos (Tequila, Orujos, etc...)", desc: "Shots (Tequila, pomace brandy, etc.)", precio: "2,50 €" },
+          { nombre: "Granizado Doble con Alcohol", desc: "Double slush puppy with alcohol", precio: "9,00 €" }
+        ]
+      },
+      "cafes": {
+        titulo: "Cafés / Coffee",
+        aviso: "* Se incrementarán en 0,20€ extra de hielo",
+        platos: [
+          { nombre: "Café Solo", desc: "Black coffee", precio: "1,50 €" },
+          { nombre: "Café con leche", desc: "White coffee", precio: "2,00 €" },
+          { nombre: "Cortado", desc: "Small white coffee", precio: "1,70 €" },
+          { nombre: "Bombón", desc: "Small white coffee with condensed milk", precio: "1,70 €" },
+          { nombre: "Capuchino", desc: "Cappuccino", precio: "3,00 €" },
+          { nombre: "Carajillo", desc: "Black coffee with cognac", precio: "2,20 €" },
+          { nombre: "Asiático", desc: "Special coffee and Cognac / Licor 43", precio: "3,50 €" },
+          { nombre: "Infusiones", desc: "Tea", precio: "1,70 €" }
+        ]
+      },
+      "postres": {
+        titulo: "Carta de Postres / Desserts & Ice Creams",
+        platos: [
+          { nombre: "Tarta de Queso al Horno", desc: "Baked cheesecake", precio: "6,00 €" },
+          { nombre: "Tarrina Whisky", desc: "Biscuit, nata, whisky y azúcar quemado", precio: "6,00 €" },
+          { nombre: "Crema Catalana", desc: "Helado de crema catalana", precio: "6,00 €" },
+          { nombre: "Monoporción Tiramisú", desc: "Crema mascarpone, bizcocho, salsa de café y cacao en polvo", precio: "5,50 €" },
+          { nombre: "Pide Tu Magnum", desc: "Clásico, Cookies, Almendras", precio: "3,00 €" },
+          { nombre: "Magnum Pistacho", desc: "Helado sabor pistacho con chocolate", precio: "3,00 €" },
+          { nombre: "Magnum Double Gold Caramel", desc: "Helado sabor galleta, chocolate golden y salsa de caramelo", precio: "3,00 €" },
+          { nombre: "Choc'n Ball", desc: "Cono de nata cubierto de chocolate", precio: "3,00 €" },
+          { nombre: "Cornetto Go", desc: "Nata y galleta de chocolate", precio: "2,70 €" },
+          { nombre: "Cornetto XXL", desc: "Helado de vainilla tamaño XXL", precio: "3,00 €" },
+          { nombre: "Cornetto XXL Chocolate", desc: "Helado de chocolate tamaño XXL", precio: "3,00 €" },
+          { nombre: "Ben & Jerry's Chocolate Fudge Brownie (100 ml)", desc: "Chocolate con trocitos de brownie", precio: "4,00 €" },
+          { nombre: "Ben & Jerry's Cookie Dough (100 ml)", desc: "Vainilla, galleta y chocolate", precio: "4,00 €" },
+          { nombre: "Dinosaurus", desc: "Sándwich de vainilla con galleta Dinosaurus y chocolate", precio: "3,00 €" },
+          { nombre: "Calippo Lima-Limón", desc: "Helado de lima y limón", precio: "2,50 €" },
+          { nombre: "Frigo Chuches", desc: "Mini helados sabor chuches", precio: "2,00 €" },
+          { nombre: "Twister", desc: "Sorbete de limón, naranja y fresa", precio: "2,00 €" }
+        ]
+      }
+    };
+
+    let currentFilter = "all";
+
+    function checkAuth() {
+      if (sessionStorage.getItem('estacio_auth') === 'true') {
+        document.getElementById('login-modal').classList.add('hidden');
+        document.getElementById('admin-panel').classList.remove('hidden');
+        renderList();
+      }
+    }
+
+    function handleLogin(e) {
+      e.preventDefault();
+      const user = document.getElementById('user-input').value.trim();
+      const pass = document.getElementById('pass-input').value.trim();
+
+      if (user === 'chiringuitoestacio' && pass === '10000') {
+        sessionStorage.setItem('estacio_auth', 'true');
+        document.getElementById('login-modal').classList.add('hidden');
+        document.getElementById('admin-panel').classList.remove('hidden');
+        renderList();
+      } else {
+        document.getElementById('login-error').classList.remove('hidden');
+      }
+    }
+
+    function logout() {
+      sessionStorage.removeItem('estacio_auth');
+      window.location.reload();
+    }
+
+    function getMenu() {
+      const stored = localStorage.getItem('estacio_carta_datos');
+      if (!stored) {
+        localStorage.setItem('estacio_carta_datos', JSON.stringify(defaultData));
+        return defaultData;
+      }
+      try {
+        return JSON.parse(stored);
+      } catch(e) {
+        return defaultData;
+      }
+    }
+
+    function saveMenu(data) {
+      localStorage.setItem('estacio_carta_datos', JSON.stringify(data));
+    }
+
+    function handleAddProduct(e) {
+      e.preventDefault();
+      const cat = document.getElementById('prod-category').value;
+      const nombre = document.getElementById('prod-name').value.trim();
+      const desc = document.getElementById('prod-desc').value.trim();
+      let precio = document.getElementById('prod-price').value.trim();
+      if (!precio.includes('€')) precio += ' €';
+
+      const menu = getMenu();
+      if (!menu[cat]) {
+        menu[cat] = { titulo: cat.toUpperCase(), platos: [] };
+      }
+
+      menu[cat].platos.unshift({ nombre, desc, precio });
+      saveMenu(menu);
+      e.target.reset();
+      renderList();
+    }
+
+    // Actualiza en tiempo real según tecleas
+    function updatePrice(cat, index, newPrice) {
+      const menu = getMenu();
+      if (menu[cat] && menu[cat].platos && menu[cat].platos[index]) {
+        let val = newPrice.trim();
+        if (val && !val.includes('€')) val += ' €';
+        menu[cat].platos[index].precio = val || newPrice;
+        saveMenu(menu);
+      }
+    }
+
+    function deleteProduct(cat, index) {
+      if (!confirm('¿Seguro que quieres borrar este plato?')) return;
+      const menu = getMenu();
+      if (menu[cat] && menu[cat].platos) {
+        menu[cat].platos.splice(index, 1);
+        saveMenu(menu);
+        renderList();
+      }
+    }
+
+    function changeFilter(val) {
+      currentFilter = val;
+      renderList();
+    }
+
+    function restoreDefaultMenu() {
+      if (confirm('¿Restaurar todos los platos y precios originales de la carta?')) {
+        localStorage.setItem('estacio_carta_datos', JSON.stringify(defaultData));
+        renderList();
+      }
+    }
+
+    function renderList() {
+      const menu = getMenu();
+      const container = document.getElementById('admin-dishes-list');
+      container.innerHTML = '';
+
+      let categories = Object.keys(menu);
+      if (currentFilter !== 'all') {
+        categories = categories.filter(c => c === currentFilter);
+      }
+
+      categories.forEach(catKey => {
+        const catData = menu[catKey];
+        if (!catData || !catData.platos || catData.platos.length === 0) return;
+
+        const catTitle = document.createElement('div');
+        catTitle.className = "pt-2 pb-1 text-xs font-bold uppercase tracking-wider text-[#c98a42] border-b border-stone-800 flex justify-between";
+        catTitle.innerHTML = `<span>${catData.titulo}</span> <span class="text-stone-500 font-normal">(${catData.platos.length})</span>`;
+        container.appendChild(catTitle);
+
+        catData.platos.forEach((plato, idx) => {
+          const row = document.createElement('div');
+          row.className = "bg-white text-stone-900 px-3.5 py-2.5 rounded-xl flex items-center justify-between gap-3 shadow-sm border border-stone-100";
+          row.innerHTML = `
+            <div class="min-w-0">
+              <h4 class="font-bold text-xs sm:text-sm text-stone-900 truncate">${plato.nombre}</h4>
+              <p class="text-[11px] text-stone-500 truncate">${plato.desc || 'Sin descripción'}</p>
+            </div>
+
+            <div class="flex items-center gap-2 shrink-0">
+              <div class="flex items-center bg-stone-100 rounded-lg px-2 py-1 border border-stone-200 focus-within:border-[#c98a42]">
+                <input 
+                  type="text" 
+                  value="${plato.precio}" 
+                  oninput="updatePrice('${catKey}', ${idx}, this.value)" 
+                  class="w-20 bg-transparent font-black text-xs sm:text-sm text-[#c98a42] outline-none text-right"
+                >
+              </div>
+
+              <button onclick="deleteProduct('${catKey}', ${idx})" class="text-red-500 hover:text-red-700 bg-red-50 hover:bg-red-100 p-1.5 rounded-lg text-xs font-bold transition" title="Borrar plato">
+                🗑️
+              </button>
+            </div>
+          `;
+          container.appendChild(row);
+        });
+      });
+    }
+
+    checkAuth();
+  </script>
+</body>
+</html>
